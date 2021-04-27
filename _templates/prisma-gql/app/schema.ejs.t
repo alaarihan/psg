@@ -1,0 +1,14 @@
+---
+to: src/schema.ts
+---
+
+import { GraphQLSchema, GraphQLObjectType } from 'graphql'
+
+export const schema = new GraphQLSchema({
+  query: new GraphQLObjectType({
+    name: 'Query',
+    fields: {
+      
+    }
+  })
+})
