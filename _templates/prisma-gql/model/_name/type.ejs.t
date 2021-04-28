@@ -52,7 +52,7 @@ export const <%= name %> = new GraphQLObjectType({
       <%_ if(field.kind === 'object' && field.isList === true){ -%>
         args: {
           <% getGqlTypeArgs(name, field).forEach(function(arg){ -%>
-            <%= arg.name %>: { type: <%- getGqlType(arg.inputTypes[0]) %> },
+            <%= arg.name %>: { type: <%- getGqlType(arg) %> },
           <% }) %>
         }
       <%_ } -%>

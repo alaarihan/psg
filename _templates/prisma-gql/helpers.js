@@ -2,11 +2,31 @@ const { dmmf } = require('@prisma/client')
 
 module.exports = {
   inputs: dmmf.schema.inputObjectTypes.prisma, //.filter(item => item.name.startsWith(args.name))
-  Enums: [
-    ...dmmf.schema.enumTypes.model,
-    ...dmmf.schema.enumTypes.prisma,
-  ],
-  getGqlType: function (field) {
+  Enums: [...dmmf.schema.enumTypes.model, ...dmmf.schema.enumTypes.prisma],
+  getGqlType: function (item) {
+    let field
+    if (item.inputTypes && item.inputTypes.length) {
+      let newField
+      if (
+        item.inputTypes.length > 1 &&
+        item.inputTypes[1].type.endsWith('FieldUpdateOperationsInput')
+      ) {
+        newField = item.inputTypes[0]
+      } else if (
+        item.inputTypes.length > 1 &&
+        (item.inputTypes[1].location === 'inputObjectTypes' ||
+        item.inputTypes[1].isList)
+      ) {
+        newField = item.inputTypes[1]
+      } else {
+        newField = item.inputTypes[0]
+      }
+      field = newField
+      field.isRequired = item.isRequired !== undefined ? item.isRequired : undefined
+      field.isNullable = item.isNullable !== undefined ? item.isNullable : undefined
+    }else {
+      field = item
+    }
     let fieldType
     if (field.type === 'String') {
       fieldType = 'GraphQLString'
@@ -18,12 +38,14 @@ module.exports = {
       fieldType = 'GraphQLBoolean'
     } else if (field.type === 'DateTime') {
       fieldType = 'GraphQLDateTime'
-    }else if (field.type === 'Json') {
+    } else if (field.type === 'Json') {
       fieldType = 'GraphQLJSON'
     } else {
       fieldType = field.type
     }
-    // fieldType = field.location && field.location === 'inputObjectTypes' ? `${fieldType}()` : fieldType
+    fieldType = field.isNullable === false && field.isList
+      ? `new GraphQLNonNull(${fieldType})`
+      : fieldType
     fieldType = field.isList ? `new GraphQLList(${fieldType})` : fieldType
     fieldType = field.isRequired
       ? `new GraphQLNonNull(${fieldType})`
@@ -31,7 +53,9 @@ module.exports = {
     return fieldType
   },
 
-  getGqlTypeArgs(modelName, field){
-    return dmmf.schema.outputObjectTypes.model.find(item => item.name === modelName).fields.find(item => item.name === field.name).args
-  }
+  getGqlTypeArgs(modelName, field) {
+    return dmmf.schema.outputObjectTypes.model
+      .find((item) => item.name === modelName)
+      .fields.find((item) => item.name === field.name).args
+  },
 }

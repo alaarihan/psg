@@ -6,6 +6,7 @@ force: true
 import {
   GraphQLInt,
   GraphQLList,
+  GraphQLNonNull
 } from 'graphql'
 import { <%= name %> } from './type'
 import { <%= name %>WhereUniqueInput, <%= name %>WhereInput, <%= name %>OrderByInput} from '../inputs'
@@ -14,7 +15,7 @@ export const <%= h.changeCase.camel(name) %>Queries = {
   <%= h.changeCase.camel(name) %>: {
     type: <%= name %>,
     args: {
-      where: { type: <%= name %>WhereUniqueInput },
+      where: { type: new GraphQLNonNull(<%= name %>WhereUniqueInput) },
     },
     async resolve(_root, args, ctx) {
       return ctx.prisma.<%= h.changeCase.camel(name) %>.findUnique(args as any)
@@ -24,7 +25,7 @@ export const <%= h.changeCase.camel(name) %>Queries = {
     type: <%= name %>,
     args: {
       where: { type: <%= name %>WhereInput },
-      orderBy: { type: <%= name %>OrderByInput },
+      orderBy: { type: new GraphQLList(<%= name %>OrderByInput) },
       cursor: { type: <%= name %>WhereUniqueInput},
       skip: { type: GraphQLInt },
       take: { type: GraphQLInt },
@@ -35,10 +36,10 @@ export const <%= h.changeCase.camel(name) %>Queries = {
     },
   },
   <%= h.inflection.pluralize(h.changeCase.camel(name)) %>: {
-    type: new GraphQLList(<%= name %>),
+    type: new GraphQLList(new GraphQLNonNull(<%= name %>)),
     args: {
       where: { type: <%= name %>WhereInput },
-      orderBy: { type: <%= name %>OrderByInput },
+      orderBy: { type: new GraphQLList(<%= name %>OrderByInput) },
       cursor: { type: <%= name %>WhereUniqueInput},
       skip: { type: GraphQLInt },
       take: { type: GraphQLInt },
@@ -49,10 +50,10 @@ export const <%= h.changeCase.camel(name) %>Queries = {
     },
   },
   <%= h.inflection.pluralize(h.changeCase.camel(name)) %>Count: {
-    type: GraphQLInt,
+    type: new GraphQLNonNull(GraphQLInt),
     args: {
       where: { type: <%= name %>WhereInput },
-      orderBy: { type: <%= name %>OrderByInput },
+      orderBy: { type: new GraphQLList(<%= name %>OrderByInput) },
       cursor: { type: <%= name %>WhereUniqueInput},
       skip: { type: GraphQLInt },
       take: { type: GraphQLInt },

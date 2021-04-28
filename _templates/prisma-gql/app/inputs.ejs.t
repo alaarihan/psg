@@ -25,7 +25,7 @@ export const <%= input.name %> = new GraphQLInputObjectType({
   name: '<%= input.name %>',
   fields:  () => ({
     <% input.fields.forEach(function(field){ -%>
-    <%= field.name %>: { type: <%- getGqlType(field.inputTypes[0]) %> },
+    <%= field.name %>: { type: <%- getGqlType(field) %> },
     <% }); %>
   })
 });
