@@ -4,9 +4,7 @@ module.exports = {
   inputs: dmmf.schema.inputObjectTypes.prisma, //.filter(item => item.name.startsWith(args.name))
   Enums: [
     ...dmmf.schema.enumTypes.model,
-    ...dmmf.schema.enumTypes.prisma.filter((item) =>
-      ['SortOrder', 'QueryMode'].includes(item.name),
-    ),
+    ...dmmf.schema.enumTypes.prisma,
   ],
   getGqlType: function (field) {
     let fieldType
@@ -20,6 +18,8 @@ module.exports = {
       fieldType = 'GraphQLBoolean'
     } else if (field.type === 'DateTime') {
       fieldType = 'GraphQLDateTime'
+    }else if (field.type === 'Json') {
+      fieldType = 'GraphQLJSON'
     } else {
       fieldType = field.type
     }
@@ -30,4 +30,8 @@ module.exports = {
       : fieldType
     return fieldType
   },
+
+  getGqlTypeArgs(modelName, field){
+    return dmmf.schema.outputObjectTypes.model.find(item => item.name === modelName).fields.find(item => item.name === field.name).args
+  }
 }

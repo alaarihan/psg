@@ -5,4 +5,4 @@ append: true
 skip_if: "'./<%= name %>/queries'"
 ---
 
-export * from './<%= name %>/queries' 
+export * from './<%= name %>/queries'

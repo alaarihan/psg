@@ -16,7 +16,7 @@ import {
   GraphQLInputType,
   GraphQLSchema
 } from 'graphql'
-import { GraphQLDateTime } from 'graphql-scalars';
+import { GraphQLDateTime, GraphQLJSON } from 'graphql-scalars';
 <% const importEnums = Enums.map(item => item.name) %>
 import { <%= importEnums.toString() %> } from './enums'
 

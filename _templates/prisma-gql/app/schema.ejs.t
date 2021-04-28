@@ -8,7 +8,7 @@ export const schema = new GraphQLSchema({
   query: new GraphQLObjectType({
     name: 'Query',
     fields: {
-      
+      // merge the fields here
     }
   })
 })

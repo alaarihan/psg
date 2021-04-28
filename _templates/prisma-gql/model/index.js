@@ -1,11 +1,12 @@
 const { dmmf } = require('@prisma/client')
-const { getGqlType, model, inputs,  Enums} = require('../helpers')
+const { getGqlType, getGqlTypeArgs, inputs, Enums } = require('../helpers')
 module.exports = {
   params: ({ args }) => {
     const model = dmmf.datamodel.models.find((item) => item.name === args.name)
     if (args.noPrettier === undefined) {
       args.noPrettier = false
     }
-    return { ...args, model, inputs, Enums, getGqlType }
+    // outputTypes = dmmf.schema.outputObjectTypes.model.find(item => item.name === args.name).fields.filter(item => item.outputType.isList)
+    return { ...args, model, inputs, Enums, getGqlType, getGqlTypeArgs }
   },
 }

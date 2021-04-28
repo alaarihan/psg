@@ -9,8 +9,8 @@ import {
   GraphQLObjectType,
 } from 'graphql'
 import { <%= name %> } from './type'
-import { <%= name %>WhereUniqueInput, <%= name %>WhereInput, <%= name %>OrderByInput,  } from '../inputs'
-
+import { <%= name %>WhereUniqueInput, <%= name %>WhereInput, <%= name %>OrderByInput} from '../inputs'
+import { <%= name %>ScalarFieldEnum } from '../enums'
 export const <%= h.changeCase.camel(name) %>Queries = {
   <%= h.changeCase.camel(name) %>: {
     type: <%= name %>,
@@ -29,6 +29,7 @@ export const <%= h.changeCase.camel(name) %>Queries = {
       cursor: { type: <%= name %>WhereUniqueInput},
       skip: { type: GraphQLInt },
       take: { type: GraphQLInt },
+      distinct: { type: new GraphQLList(<%= name %>ScalarFieldEnum) },
     },
     async resolve(_root, args, ctx) {
       return ctx.prisma.<%= h.changeCase.camel(name) %>.findFirst(args as any)
@@ -42,6 +43,7 @@ export const <%= h.changeCase.camel(name) %>Queries = {
       cursor: { type: <%= name %>WhereUniqueInput},
       skip: { type: GraphQLInt },
       take: { type: GraphQLInt },
+      distinct: { type: new GraphQLList(<%= name %>ScalarFieldEnum) },
     },
     async resolve(_root, args, ctx) {
       return ctx.prisma.<%= h.changeCase.camel(name) %>.findMany(args as any)
@@ -55,6 +57,7 @@ export const <%= h.changeCase.camel(name) %>Queries = {
       cursor: { type: <%= name %>WhereUniqueInput},
       skip: { type: GraphQLInt },
       take: { type: GraphQLInt },
+      distinct: { type: new GraphQLList(<%= name %>ScalarFieldEnum) },
     },
     async resolve(_root, args, ctx) {
       return ctx.prisma.<%= h.changeCase.camel(name) %>.count(args as any)
