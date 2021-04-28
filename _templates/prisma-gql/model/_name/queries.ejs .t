@@ -6,7 +6,6 @@ force: true
 import {
   GraphQLInt,
   GraphQLList,
-  GraphQLObjectType,
 } from 'graphql'
 import { <%= name %> } from './type'
 import { <%= name %>WhereUniqueInput, <%= name %>WhereInput, <%= name %>OrderByInput} from '../inputs'

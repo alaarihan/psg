@@ -3,15 +3,9 @@ to: src/models/<%= name %>/mutations.ts
 force: true
 ---
 
-import {
-  GraphQLInt,
-  GraphQLList,
-  GraphQLNonNull,
-  GraphQLObjectType,
-} from 'graphql'
 import { <%= name %> } from './type'
 import { BatchPayload } from '../types'
-import { <%= name %>CreateInput, <%= name %>UpdateInput, <%= name %>WhereUniqueInput, <%= name %>WhereInput, <%= name %>OrderByInput, <%= name %>UpdateManyMutationInput } from '../inputs'
+import { <%= name %>CreateInput, <%= name %>UpdateInput, <%= name %>WhereUniqueInput, <%= name %>WhereInput, <%= name %>UpdateManyMutationInput } from '../inputs'
 import { <%= name %>ScalarFieldEnum } from '../enums'
 
 export const <%= h.changeCase.camel(name) %>Mutations = {
