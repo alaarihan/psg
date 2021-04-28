@@ -1,7 +1,7 @@
 ---
 inject: true
 to: src/schema.ts
-after: fields
+after: "// merge the query fields here"
 skip_if: "...<%= h.changeCase.camel(name) %>Queries"
 ---
 

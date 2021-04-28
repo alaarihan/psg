@@ -5,4 +5,4 @@ prepend: true
 skip_if: "{ <%= h.changeCase.camel(name) %>Queries }"
 ---
 
-import {<%= h.changeCase.camel(name) %>Queries} from './models/queries' 
+import { <%= h.changeCase.camel(name) %>Queries } from './models/queries' 
