@@ -9,7 +9,7 @@
     "start": "node dist/server",
     "dev": "ts-node-dev --no-notify --respawn --transpile-only src/server",
     "clean": "rm -rf dist",
-    "build": "npm -s run clean && npm -s run generate && tsc",
+    "build": "npm -s run clean && tsc",
     "generate:prisma": "prisma generate",
     "create-migration": "prisma migrate dev",
     "db-push": "prisma db push --preview-feature",
