@@ -6,7 +6,6 @@ force: true
 import { <%= name %> } from './type'
 import { BatchPayload } from '../types'
 import { <%= name %>CreateInput, <%= name %>UpdateInput, <%= name %>WhereUniqueInput, <%= name %>WhereInput, <%= name %>UpdateManyMutationInput } from '../inputs'
-import { <%= name %>ScalarFieldEnum } from '../enums'
 
 export const <%= h.changeCase.camel(name) %>Mutations = {
   create<%= name %>: {
