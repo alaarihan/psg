@@ -36,7 +36,7 @@ export const <%= h.changeCase.camel(name) %>Queries = {
     },
   },
   <%= h.inflection.pluralize(h.changeCase.camel(name)) %>: {
-    type: new GraphQLList(new GraphQLNonNull(<%= name %>)),
+    type: new GraphQLNonNull(new GraphQLList(new GraphQLNonNull(<%= name %>))),
     args: {
       where: { type: <%= name %>WhereInput },
       orderBy: { type: new GraphQLList(<%= name %>OrderByInput) },

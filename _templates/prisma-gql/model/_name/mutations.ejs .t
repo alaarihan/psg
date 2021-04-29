@@ -4,11 +4,13 @@ force: true
 ---
 
 import {
+  GraphQLBoolean,
   GraphQLNonNull,
+  GraphQLList
 } from 'graphql'
 import { <%= name %> } from './type'
-import { BatchPayload } from '../types'
-import { <%= name %>CreateInput, <%= name %>UpdateInput, <%= name %>WhereUniqueInput, <%= name %>WhereInput, <%= name %>UpdateManyMutationInput } from '../inputs'
+import { AffectedRowsOutput } from '../types'
+import { <%= name %>CreateInput, <%= name %>UpdateInput, <%= name %>WhereUniqueInput, <%= name %>WhereInput, <%= name %>UpdateManyMutationInput, <%= name %>CreateManyInput } from '../inputs'
 
 export const <%= h.changeCase.camel(name) %>Mutations = {
   create<%= name %>: {
@@ -50,8 +52,18 @@ export const <%= h.changeCase.camel(name) %>Mutations = {
       return ctx.prisma.<%= h.changeCase.camel(name) %>.upsert(args as any)
     },
   },
+  createMany<%= name %>: {
+    type: new GraphQLNonNull(AffectedRowsOutput),
+    args: {
+      data: { type: new GraphQLNonNull(new GraphQLList(new GraphQLNonNull(<%= name %>CreateManyInput))) },
+      skipDuplicates:  { type: GraphQLBoolean }
+    },
+    async resolve(_root, args, ctx) {
+      return ctx.prisma.<%= h.changeCase.camel(name) %>.createMany(args as any)
+    },
+  },
   updateMany<%= name %>: {
-    type: new GraphQLNonNull(BatchPayload),
+    type: new GraphQLNonNull(AffectedRowsOutput),
     args: {
       where: { type: new GraphQLNonNull(<%= name %>WhereInput) },
       data: { type: new GraphQLNonNull(<%= name %>UpdateManyMutationInput) },
@@ -61,7 +73,7 @@ export const <%= h.changeCase.camel(name) %>Mutations = {
     },
   },
   deleteMany<%= name %>: {
-    type: new GraphQLNonNull(BatchPayload),
+    type: new GraphQLNonNull(AffectedRowsOutput),
     args: {
       where: { type: new GraphQLNonNull(<%= name %>WhereInput) },
     },

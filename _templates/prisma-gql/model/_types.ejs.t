@@ -9,8 +9,8 @@ import {
   GraphQLObjectType,
 } from 'graphql'
 
-export const BatchPayload = new GraphQLObjectType({
-  name: 'BatchPayload',
+export const AffectedRowsOutput = new GraphQLObjectType({
+  name: 'AffectedRowsOutput',
   fields: () => ({
     count: {
       type: new GraphQLNonNull(GraphQLInt),

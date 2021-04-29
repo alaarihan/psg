@@ -15,16 +15,18 @@ module.exports = {
       } else if (
         item.inputTypes.length > 1 &&
         (item.inputTypes[1].location === 'inputObjectTypes' ||
-        item.inputTypes[1].isList)
+          item.inputTypes[1].isList)
       ) {
         newField = item.inputTypes[1]
       } else {
         newField = item.inputTypes[0]
       }
       field = newField
-      field.isRequired = item.isRequired !== undefined ? item.isRequired : undefined
-      field.isNullable = item.isNullable !== undefined ? item.isNullable : undefined
-    }else {
+      field.isRequired =
+        item.isRequired !== undefined ? item.isRequired : undefined
+      field.isNullable =
+        item.isNullable !== undefined ? item.isNullable : undefined
+    } else {
       field = item
     }
     let fieldType
@@ -43,9 +45,12 @@ module.exports = {
     } else {
       fieldType = field.type
     }
-    fieldType = field.isNullable === false && field.isList
-      ? `new GraphQLNonNull(${fieldType})`
-      : fieldType
+    fieldType =
+      field.isList &&
+      (field.isNullable === false ||
+        (field.isNullable === undefined && field.isRequired))
+        ? `new GraphQLNonNull(${fieldType})`
+        : fieldType
     fieldType = field.isList ? `new GraphQLList(${fieldType})` : fieldType
     fieldType = field.isRequired
       ? `new GraphQLNonNull(${fieldType})`
