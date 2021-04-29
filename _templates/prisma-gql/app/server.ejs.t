@@ -17,4 +17,6 @@ app.register(mercurius, {
 })
 
 
-app.listen(3000)
+app.listen(3000).catch((err) => {
+  console.log(err)
+})
