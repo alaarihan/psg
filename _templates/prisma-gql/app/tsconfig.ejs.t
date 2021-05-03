@@ -5,7 +5,7 @@ unless_exists: true
 
 {
   "compilerOptions": {
-    "module": "es6",
+    "module": "commonjs",
     "esModuleInterop": true,
     "target": "es6",
     "noImplicitAny": false,

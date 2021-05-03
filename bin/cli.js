@@ -18,6 +18,7 @@ if (
   process.argv[3] === 'all' &&
   dmmf
 ) {
+  // generate all models
   generateModel(0)
 } else {
   run(hygenArgs)
