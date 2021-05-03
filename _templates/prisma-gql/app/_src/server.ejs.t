@@ -1,6 +1,5 @@
 ---
-to: <%= options.dir %>/server.ts
-sh: npm run prettier
+to: <%= name %>/src/server.ts
 ---
 
 import fastify from 'fastify'

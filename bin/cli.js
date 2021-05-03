@@ -4,8 +4,10 @@ const PrismaClientPatch = path.join(
   process.cwd(),
   'node_modules/@prisma/client',
 )
-
-const { dmmf } = require(PrismaClientPatch)
+let dmmf
+try {
+  dmmf = require(PrismaClientPatch).dmmf
+} catch (e) {}
 const { run } = require('../dist')
 const { generateModel } = require('../dist/all-models')
 const hygenArgs = ['prisma-gql', ...process.argv.slice(2)]

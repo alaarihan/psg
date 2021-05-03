@@ -1,7 +1,8 @@
-const { getGqlType, inputs, Enums, options } = require('../helpers')
 module.exports = {
   params: ({ args }) => {
-   
-    return { ...args, inputs, Enums, getGqlType, options }
+   if(!args.name){
+     args.name = 'new-psg-app'
+   }
+    return args
   },
 }

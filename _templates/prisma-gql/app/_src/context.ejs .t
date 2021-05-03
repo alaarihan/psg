@@ -1,5 +1,5 @@
 ---
-to: <%= options.dir %>/context.ts
+to: <%= name %>/src/context.ts
 ---
 
 import { PrismaClient, Prisma as PrismaTypes } from '@prisma/client'

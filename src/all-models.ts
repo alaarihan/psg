@@ -6,8 +6,11 @@ const PrismaClientPatch = path.join(
   'node_modules/@prisma/client',
 )
 
-const { dmmf } = require(PrismaClientPatch)
-const dataModels = dmmf.datamodel.models
+let dmmf
+try {
+  dmmf = require(PrismaClientPatch).dmmf
+} catch (e) {}
+const dataModels = dmmf?.datamodel?.models ? dmmf.datamodel.models : []
 
 export function generateModel(index) {
   const modelName = dataModels[index].name

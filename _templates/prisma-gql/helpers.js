@@ -3,19 +3,16 @@ const PrismaClientPatch = path.join(
   process.cwd(),
   'node_modules/@prisma/client',
 )
-console.log('options')
+
 const generatorOptionsFile = path.join(process.cwd(), '.psg.js')
-let options = { dir: 'app'}
+let options = { dir: 'src'}
 try {
   const generatorOptions = require(generatorOptionsFile)
   options = generatorOptions.options
 } catch (e) {
-  if (e instanceof Error && e.code === 'MODULE_NOT_FOUND') {
-    console.log("Can't find .psg.js file")
-  } else throw e
 }
 if(!options.dir){
-  options.dir = 'app'
+  options.dir = 'src'
 }
 
 const { dmmf } = require(PrismaClientPatch)
