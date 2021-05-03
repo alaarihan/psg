@@ -1,8 +1,31 @@
-const { dmmf } = require('@prisma/client')
+const path = require('path')
+const PrismaClientPatch = path.join(
+  process.cwd(),
+  'node_modules/@prisma/client',
+)
+console.log('options')
+const generatorOptionsFile = path.join(process.cwd(), '.psg.js')
+let options = { dir: 'app'}
+try {
+  const generatorOptions = require(generatorOptionsFile)
+  options = generatorOptions.options
+} catch (e) {
+  if (e instanceof Error && e.code === 'MODULE_NOT_FOUND') {
+    console.log("Can't find .psg.js file")
+  } else throw e
+}
+if(!options.dir){
+  options.dir = 'app'
+}
+
+const { dmmf } = require(PrismaClientPatch)
 
 module.exports = {
+  options,
   inputs: dmmf.schema.inputObjectTypes.prisma, //.filter(item => item.name.startsWith(args.name))
-  Enums: [...dmmf.schema.enumTypes.model, ...dmmf.schema.enumTypes.prisma],
+  Enums: dmmf.schema.enumTypes.model
+    ? [...dmmf.schema.enumTypes.model, ...dmmf.schema.enumTypes.prisma]
+    : dmmf.schema.enumTypes.prisma,
   getGqlType: function (item) {
     let field
     if (item.inputTypes && item.inputTypes.length) {

@@ -1,6 +1,6 @@
 ---
 inject: true
-to: src/schema.ts
+to: <%= options.dir %>/schema.ts
 prepend: true
 skip_if: "{ <%= h.changeCase.camel(name) %>Mutations }"
 ---

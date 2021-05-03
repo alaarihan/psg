@@ -1,6 +1,6 @@
 ---
 inject: true
-to: src/models/mutations.ts
+to: <%= options.dir %>/models/mutations.ts
 append: true
 skip_if: "'./<%= name %>/mutations'"
 ---

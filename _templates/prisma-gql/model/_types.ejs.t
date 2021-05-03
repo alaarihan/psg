@@ -1,5 +1,5 @@
 ---
-to: src/models/types.ts
+to: <%= options.dir %>/models/types.ts
 unless_exists: true
 ---
 

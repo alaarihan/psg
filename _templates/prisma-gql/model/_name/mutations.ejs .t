@@ -1,6 +1,5 @@
 ---
-to: src/models/<%= name %>/mutations.ts
-force: true
+to: <%= options.dir %>/models/<%= name %>/mutations.ts
 ---
 
 import {

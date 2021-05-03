@@ -1,5 +1,5 @@
 ---
-to: src/schema.ts
+to: <%= options.dir %>/schema.ts
 ---
 
 import { GraphQLSchema, GraphQLObjectType } from 'graphql'

@@ -1,13 +1,20 @@
-const { spawn } = require('child_process')
-const { dmmf } = require('@prisma/client')
+import { spawn } from "child_process"
+
+const path = require('path')
+const PrismaClientPatch = path.join(
+  process.cwd(),
+  'node_modules/@prisma/client',
+)
+
+const { dmmf } = require(PrismaClientPatch)
 const dataModels = dmmf.datamodel.models
 
-function generateModel(index) {
+export function generateModel(index) {
   const modelName = dataModels[index].name
   console.log(`\n## Start generating ${modelName} model. ##`)
   const gen = spawn(
-    'hygen',
-    ['prisma-gql', 'model', '--name', modelName, '--noPrettier', 'true'],
+    'psg',
+    ['model', '--name', modelName, '--noPrettier', 'true'],
     { stdio: 'inherit' },
   )
 
@@ -25,4 +32,3 @@ function generateModel(index) {
     }
   })
 }
-generateModel(0)

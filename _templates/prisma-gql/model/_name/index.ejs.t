@@ -1,5 +1,5 @@
 ---
-to: src/models/<%= name %>/index.ts
+to: <%= options.dir %>/models/<%= name %>/index.ts
 force: true
 ---
 

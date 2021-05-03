@@ -1,5 +1,5 @@
 ---
-to: src/models/<%= name %>/type.ts
+to: <%= options.dir %>/models/<%= name %>/type.ts
 force: true
 sh: "<%= !noPrettier ? `npm run prettier` : '' %>"
 ---

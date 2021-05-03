@@ -1,6 +1,6 @@
 ---
 inject: true
-to: src/models/queries.ts
+to: <%= options.dir %>/models/queries.ts
 append: true
 skip_if: "'./<%= name %>/queries'"
 ---

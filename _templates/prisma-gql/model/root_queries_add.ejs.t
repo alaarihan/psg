@@ -1,6 +1,6 @@
 ---
 inject: true
-to: src/schema.ts
+to: <%= options.dir %>/schema.ts
 after: "// merge the query fields here"
 skip_if: "...<%= h.changeCase.camel(name) %>Queries"
 ---

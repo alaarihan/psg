@@ -1,5 +1,5 @@
 ---
-to: src/server.ts
+to: <%= options.dir %>/server.ts
 sh: npm run prettier
 ---
 

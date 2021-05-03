@@ -1,32 +1,22 @@
 {
   "name": "prisma-gql-schema-gen",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "1.0.1",
+  "main": "dist/index.js",
   "license": "MIT",
   "private": true,
   "description": "Prisma GraphQL Schema generator",
   "scripts": {
-    "start": "node dist/server",
-    "dev": "ts-node-dev --no-notify --respawn --transpile-only src/server",
     "clean": "rm -rf dist",
     "build": "npm -s run clean && tsc",
-    "generate:prisma": "prisma generate",
-    "create-migration": "prisma migrate dev",
-    "db-push": "prisma db push --preview-feature",
-    "db-pull": "prisma db pull",
-    "generate:models": "node index",
     "prettier": "prettier --write src/"
   },
   "dependencies": {
-    "@prisma/client": "^2.21.2",
-    "fastify": "^3.14.2",
-    "graphql": "^15.5.0",
-    "graphql-scalars": "^1.9.1",
-    "graphql-tools": "^7.0.4",
-    "mercurius": "^7.4.0"
+    "enquirer": "^2.3.6",
+    "execa": "^5.0.0",
+    "hygen": "^6.1.0"
   },
   "devDependencies": {
-    "@types/node": "^14.14.41",
+    "@types/node": "^15.0.1",
     "prettier": "^2.2.1",
     "prisma": "2.21.2",
     "ts-node": "^9.1.1",
@@ -38,6 +28,9 @@
     "semi": false,
     "trailingComma": "all"
   },
-  "repository": "",
+  "bin": {
+    "psg": "./bin/cli.js"
+  },
+  "repository": "https://github.com/alaarihan/prisma-gql-generator",
   "author": "Alaa Rihan"
 }

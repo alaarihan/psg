@@ -1,6 +1,5 @@
 ---
-to: src/models/<%= name %>/queries.ts
-force: true
+to: <%= options.dir %>/models/<%= name %>/queries.ts
 ---
 
 import {

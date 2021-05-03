@@ -1,5 +1,5 @@
 ---
-to: src/models/enums.ts
+to: <%= options.dir %>/models/enums.ts
 force: true
 ---
 

@@ -1,5 +1,5 @@
 ---
-to: src/models/mutations.ts
+to: <%= options.dir %>/models/mutations.ts
 unless_exists: true
 ---
 

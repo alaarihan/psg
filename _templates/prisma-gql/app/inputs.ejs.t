@@ -1,5 +1,5 @@
 ---
-to: src/models/inputs.ts
+to: <%= options.dir %>/models/inputs.ts
 force: true
 ---
 
