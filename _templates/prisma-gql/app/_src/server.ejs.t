@@ -13,9 +13,13 @@ const schemaWithMiddelewares = applyMiddleware(mainSchema, prismaSelect)
 const app = fastify()
 
 app.register(mercurius, {
-  schema: mainSchema,
+  schema: schemaWithMiddelewares,
   context: createContext,
-  graphiql: true
+  subscription: {
+    context: createContext,
+  },
+  allowBatchedQueries: true
+  graphiql: 'playground',
 })
 
 

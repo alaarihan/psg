@@ -17,4 +17,10 @@ export const schema = new GraphQLSchema({
       // merge the mutation fields here
     },
   }),
+  subscription: new GraphQLObjectType({
+    name: 'Subscription',
+    fields: {
+      // merge the subscription fields here
+    },
+  }),
 })

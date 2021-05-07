@@ -28,7 +28,6 @@ unless_exists: true
     "graphql": "^15.5.0",
     "graphql-middleware": "^6.0.10",
     "graphql-scalars": "^1.9.1",
-    "graphql-tools": "^7.0.4",
     "mercurius": "^7.4.0",
     "prisma-gql-role-schema": "alaarihan/prisma-gql-role-schema#main"
   },
