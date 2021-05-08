@@ -4,12 +4,12 @@ unless_exists: true
 ---
 
 {
-  "name": "psg-app",
+  "name": "<%= appName %>",
   "version": "1.0.0",
   "main": "dist/server.js",
   "license": "MIT",
   "private": true,
-  "description": "Prisma Schema generator App",
+  "description": "<%= appDescription %>",
   "scripts": {
     "start": "node dist/server",
     "dev": "ts-node-dev --no-notify --respawn --transpile-only --exit-child src/server",
