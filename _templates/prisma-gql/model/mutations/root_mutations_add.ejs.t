@@ -1,7 +1,7 @@
 ---
 inject: true
 to: <%= options.dir %>/schema.ts
-after: "// merge the mutation fields here"
+after: "merge_the_mutation_fields_here"
 skip_if: "...<%= h.changeCase.camel(name) %>Mutations"
 ---
 

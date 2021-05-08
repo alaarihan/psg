@@ -18,7 +18,7 @@ app.register(mercurius, {
   subscription: {
     context: createContext,
   },
-  allowBatchedQueries: true
+  allowBatchedQueries: true,
   graphiql: 'playground',
 })
 
