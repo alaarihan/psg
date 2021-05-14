@@ -23,6 +23,11 @@ app.register(mercurius, {
 })
 
 
-app.listen(3000).catch((err) => {
-  console.log(err)
-})
+app
+  .listen(3000)
+  .then(() =>
+    console.log(`🚀 Server ready at http://localhost:3000/playground`),
+  )
+  .catch((err) => {
+    console.log(err)
+  })
