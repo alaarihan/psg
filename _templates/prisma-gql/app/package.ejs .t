@@ -19,7 +19,7 @@ unless_exists: true
     "create-migration": "prisma migrate dev",
     "db-push": "prisma db push --preview-feature",
     "db-pull": "prisma db pull",
-    "prettier": "prettier --write src/"
+    "prettier": "prettier --write src"
   },
   "dependencies": {
     "@paljs/plugins": "^3.0.11",

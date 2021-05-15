@@ -2,6 +2,7 @@
 to: <%= name %>/src/server.ts
 ---
 
+require('dotenv').config()
 import fastify from 'fastify'
 import mercurius from 'mercurius'
 import { schema as mainSchema } from './schema'

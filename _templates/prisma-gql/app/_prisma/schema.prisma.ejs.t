@@ -23,7 +23,6 @@ model User {
   dateOfBirth       DateTime?
   createdAt         DateTime  @default(now())
   updatedAt         DateTime  @updatedAt
-  logs              Log[]
   posts             Post[]
 }
 
@@ -33,19 +32,6 @@ model Permission {
   type  PermissionType
   model String         @db.VarChar(100)
   def   Json?
-}
-
-model Log {
-  id        Int      @id @default(autoincrement())
-  operation String? @db.VarChar(100)
-  message   String?
-  ip        String @db.VarChar(100)
-  host      String
-  userAgent String @db.VarChar(255)
-  referer   String?
-  createdAt DateTime @default(now())
-  authorId  Int?
-  author    User?    @relation(fields: [authorId], references: [id])
 }
 
 model Post {
