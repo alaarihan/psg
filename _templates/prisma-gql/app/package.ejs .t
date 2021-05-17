@@ -28,6 +28,7 @@ unless_exists: true
     "graphql": "^15.5.0",
     "graphql-middleware": "^6.0.10",
     "graphql-scalars": "^1.9.3",
+    "jsonwebtoken": "^8.5.1",
     "mercurius": "^7.6.1"
   },
   "devDependencies": {

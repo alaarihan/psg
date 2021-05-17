@@ -2,18 +2,37 @@
 to: <%= name %>/src/context.ts
 ---
 
-import { PrismaClient, Prisma as PrismaTypes } from '@prisma/client'
+import { PrismaClient } from '@prisma/client'
+import { MercuriusContext } from 'mercurius'
+import { verify } from 'jsonwebtoken'
 
-const prisma = new PrismaClient()
-
+export const prisma = new PrismaClient()
 export interface Context {
   prisma: PrismaClient
-  select: any
+  user: any
 }
 
-export function createContext(): Context {
+export interface FinalContext extends MercuriusContext {
+  prisma: PrismaClient
+  user: any
+}
+
+function getUserFromHeader(req) {
+  let authScope = ''
+  let user
+  if (req.headers && req.headers.authorization) {
+    authScope = req.headers.authorization
+  }
+  const token = authScope.replace('Bearer ', '')
+  if (token.length) {
+    user = verify(token, process.env.APP_SECRET)
+  }
+  return user
+}
+
+export function createContext(req, reply, ctx): Context {
   return {
     prisma,
-    select: {},
+    user: getUserFromHeader(req),
   }
 }

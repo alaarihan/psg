@@ -13,22 +13,29 @@ import { prismaSelect } from './middlewares/prismaSelect'
 const schemaWithMiddelewares = applyMiddleware(mainSchema, prismaSelect)
 const app = fastify()
 
-app.register(mercurius, {
-  schema: schemaWithMiddelewares,
-  context: createContext,
-  subscription: {
+async function start() {
+  const app = fastify()
+
+  app.register(mercurius, {
+    schema: schemaWithMiddlewares,
     context: createContext,
-  },
-  allowBatchedQueries: true,
-  graphiql: 'playground',
-})
-
-
-app
-  .listen(3000)
-  .then(() =>
-    console.log(`🚀 Server ready at http://localhost:3000/playground`),
-  )
-  .catch((err) => {
-    console.log(err)
+    graphiql: 'playground',
+    subscription: {
+      context: createContext,
+    },
+    allowBatchedQueries: true,
   })
+
+  await app.ready()
+
+  app
+    .listen(3000)
+    .then(() =>
+      console.log(`🚀 Server ready at http://localhost:3000/playground`),
+    )
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
+start()
