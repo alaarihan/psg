@@ -22,19 +22,18 @@ unless_exists: true
     "prettier": "prettier --write src"
   },
   "dependencies": {
-    "@paljs/plugins": "^3.0.11",
-    "@prisma/client": "^2.21.2",
-    "fastify": "^3.14.2",
+    "@paljs/plugins": "^3.2.0",
+    "@prisma/client": "^2.22.1",
+    "fastify": "^3.15.1",
     "graphql": "^15.5.0",
     "graphql-middleware": "^6.0.10",
-    "graphql-scalars": "^1.9.1",
-    "mercurius": "^7.4.0",
-    "prisma-gql-role-schema": "alaarihan/prisma-gql-role-schema#main"
+    "graphql-scalars": "^1.9.3",
+    "mercurius": "^7.6.1"
   },
   "devDependencies": {
-    "@types/node": "^15.0.1",
-    "prettier": "^2.2.1",
-    "prisma": "2.21.2",
+    "@types/node": "^15.3.0",
+    "prettier": "^2.3.0",
+    "prisma": "2.22.1",
     "ts-node": "^9.1.1",
     "ts-node-dev": "^1.1.6",
     "typescript": "^4.2.4"
