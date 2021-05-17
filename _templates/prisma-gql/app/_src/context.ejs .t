@@ -12,7 +12,7 @@ export interface Context {
   user: any
 }
 
-export interface FinalContext extends MercuriusContext {
+export interface AppContext extends MercuriusContext {
   prisma: PrismaClient
   user: any
 }

@@ -6,7 +6,7 @@ require('dotenv').config()
 import fastify from 'fastify'
 import mercurius from 'mercurius'
 import { schema as mainSchema } from './schema'
-import { createContext } from './context'
+import { createContext, AppContext } from './context'
 import { applyMiddleware } from 'graphql-middleware'
 import { prismaSelect } from './middlewares/prismaSelect'
 

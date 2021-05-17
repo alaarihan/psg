@@ -7,7 +7,7 @@ skip_if: "{ getUserRoleSchema }"
 
   app.graphql.addHook(
     'preParsing',
-    async function (_schema, _source, ctx) {
+    async function (_schema, _source, ctx: AppContext) {
       try {
         const userRole = ctx.user?.role
         if (userRole) {
