@@ -3,6 +3,8 @@ to: <%= name %>/.env-example
 ---
 
 APP_SECRET=<%= appName %>Secret
+ADMIN_SECRET=<%= appName %>aDMINSecret
+DATABASE_URL=postgres://username:password@host:5432/db_name?connection_limit=20
 
 MAIL_FROM=<%= appName %> <<%= appName %>@gmail.com>
 MAIL_HOST=smtp.gmail.com
