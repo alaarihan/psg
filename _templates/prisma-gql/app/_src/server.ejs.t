@@ -10,12 +10,10 @@ import { createContext, AppContext } from './context'
 import { applyMiddleware } from 'graphql-middleware'
 import { prismaSelect } from './middlewares/prismaSelect'
 
-const schemaWithMiddelewares = applyMiddleware(mainSchema, prismaSelect)
+const schemaWithMiddlewares = applyMiddleware(mainSchema, prismaSelect)
 const app = fastify()
 
 async function start() {
-  const app = fastify()
-
   app.register(mercurius, {
     schema: schemaWithMiddlewares,
     context: createContext,
