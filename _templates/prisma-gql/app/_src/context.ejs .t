@@ -25,7 +25,7 @@ function getUserFromHeader(req) {
   }
   const token = authScope.replace('Bearer ', '')
   if (token.length) {
-    user = verify(token, process.env.APP_SECRET)
+    user = verify(token, process.env.API_SECRET)
   }
   return user
 }
