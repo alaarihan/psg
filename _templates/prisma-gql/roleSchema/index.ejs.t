@@ -112,8 +112,9 @@ function getRoleSchemaTransformations(perms): SchemaTransformations {
       ...getFilteredRootFieldsFromModels(filteredModels),
       ...getFilteredRootFieldsFromPerms(perms, filteredModels),
     ]
-    transformations.rootFields =
-      transformations.rootFields.concat(filteredRootFields)
+    transformations.rootFields = transformations.rootFields.concat(
+      filteredRootFields,
+    )
 
     const filteredInputs = [
       ...getFilteredInputsFromModels(filteredModels),
@@ -127,8 +128,9 @@ function getRoleSchemaTransformations(perms): SchemaTransformations {
     )
 
     const filteredInputsFileds = getFilteredInputsFileds(FilteredModelsFields)
-    transformations.inputFields =
-      transformations.inputFields.concat(filteredInputsFileds)
+    transformations.inputFields = transformations.inputFields.concat(
+      filteredInputsFileds,
+    )
   } catch (err) {
     console.log(err)
   }
