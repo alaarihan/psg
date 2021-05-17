@@ -1,21 +1,11 @@
 const path = require('path')
-const PrismaClientPatch = path.join(
+const PrismaClientPath = path.join(
   process.cwd(),
   'node_modules/@prisma/client',
 )
+const options = require('./options')
 
-const generatorOptionsFile = path.join(process.cwd(), '.psg.js')
-let options = { dir: 'src'}
-try {
-  const generatorOptions = require(generatorOptionsFile)
-  options = generatorOptions.options
-} catch (e) {
-}
-if(!options.dir){
-  options.dir = 'src'
-}
-
-const { dmmf } = require(PrismaClientPatch)
+const { dmmf } = require(PrismaClientPath)
 
 module.exports = {
   options,

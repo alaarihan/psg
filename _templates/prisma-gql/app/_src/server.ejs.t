@@ -10,7 +10,11 @@ import { createContext, AppContext } from './context'
 import { applyMiddleware } from 'graphql-middleware'
 import { prismaSelect } from './middlewares/prismaSelect'
 
-const schemaWithMiddlewares = applyMiddleware(mainSchema, prismaSelect)
+const schemaWithMiddlewares = applyMiddleware(
+  mainSchema, 
+  prismaSelect,
+  // add_middlewares
+)
 const app = fastify()
 
 async function start() {

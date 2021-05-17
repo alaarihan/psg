@@ -1,14 +1,14 @@
 import { spawn } from 'child_process'
 
 const path = require('path')
-const PrismaClientPatch = path.join(
+const PrismaClientPath = path.join(
   process.cwd(),
   'node_modules/@prisma/client',
 )
 
 let dmmf
 try {
-  dmmf = require(PrismaClientPatch).dmmf
+  dmmf = require(PrismaClientPath).dmmf
 } catch (e) {}
 const dataModels = dmmf?.datamodel?.models ? dmmf.datamodel.models : []
 

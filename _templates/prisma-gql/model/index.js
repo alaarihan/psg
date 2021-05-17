@@ -1,7 +1,7 @@
 const path = require('path')
-const PrismaClientPatch = path.join(process.cwd(), "node_modules/@prisma/client")
+const PrismaClientPath = path.join(process.cwd(), "node_modules/@prisma/client")
 
-const { dmmf } = require(PrismaClientPatch)
+const { dmmf } = require(PrismaClientPath)
 const { getGqlType, getGqlTypeArgs, inputs, Enums, options } = require('../helpers')
 module.exports = {
   params: ({ args }) => {

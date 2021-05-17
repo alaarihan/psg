@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 const path = require('path')
-const PrismaClientPatch = path.join(
+const PrismaClientPath = path.join(
   process.cwd(),
   'node_modules/@prisma/client',
 )
 let dmmf
 try {
-  dmmf = require(PrismaClientPatch).dmmf
+  dmmf = require(PrismaClientPath).dmmf
 } catch (e) {}
 const { run } = require('../dist')
 const { generateModel } = require('../dist/all-models')

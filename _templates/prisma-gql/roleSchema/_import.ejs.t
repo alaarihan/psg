@@ -6,3 +6,4 @@ skip_if: "{ getUserRoleSchema }"
 ---
 
 import { getUserRoleSchema } from './roleSchema'
+import { authSchema } from './auth/schema'
