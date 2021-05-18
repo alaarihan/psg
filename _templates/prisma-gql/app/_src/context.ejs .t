@@ -18,14 +18,24 @@ export interface AppContext extends MercuriusContext {
 }
 
 function getUserFromHeader(req) {
-  let authScope = ''
   let user
+  const adminSecret = req.headers?.admin_secret
+  if (adminSecret) {
+    if (adminSecret === process.env.ADMIN_SECRET) {
+      const userRole = req.headers?.user_role || 'ADMIN'
+      const userId = req.headers?.user_id
+      return { id: userId, role: userRole }
+    } else {
+      throw new Error('Invalid admin secret!')
+    }
+  }
+  let authScope = ''
   if (req.headers && req.headers.authorization) {
     authScope = req.headers.authorization
   }
   const token = authScope.replace('Bearer ', '')
   if (token.length) {
-    user = verify(token, process.env.API_SECRET)
+    user = verify(token, process.env.APP_SECRET)
   }
   return user
 }
