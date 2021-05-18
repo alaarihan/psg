@@ -1,4 +1,4 @@
-# Prisma Graphql schema generator
+# Prisma GraphQL Schema Generator
 
 This is hygen based generator to generate graphql schema from prisma client models + create app with fastify to serve the schema.
 
