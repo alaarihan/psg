@@ -58,6 +58,7 @@ enum UserRole {
   ADMIN
   BLOCKED
   UNVERIFIED
+  UNAUTHORIZED
 }
 
 enum PermissionType {

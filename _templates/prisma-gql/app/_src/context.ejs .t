@@ -32,6 +32,8 @@ function getUserFromHeader(req) {
   let authScope = ''
   if (req.headers && req.headers.authorization) {
     authScope = req.headers.authorization
+  } else {
+    return { role: process.env.UNAUTHORIZED_ROLE || 'UNAUTHORIZED' }
   }
   const token = authScope.replace('Bearer ', '')
   if (token.length) {
