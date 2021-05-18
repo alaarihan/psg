@@ -7,15 +7,25 @@ This is hygen based generator to generate graphql schema from prisma client mode
 
 `cd psg`
 
+`npm install`
+
+`npm run build`
+
 `npm install . -g`
 
 
 # How to use
-To create new app
+To create a new app
 
 `psg app APP_NAME`
 
-After you answer to the prompt questions do `cd APP_NAME`
+After you answer to the prompt questions do the following 
+
+`cd APP_NAME`
+
+`npm install`
+
+And don't forget to rename `.env-example` to `.env` and update the file values
 
 
 To generate all models (This will auto generate the inputs also )
