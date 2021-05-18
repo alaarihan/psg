@@ -49,8 +49,10 @@ To generate inputs
 
 
 To add basic auth
+
 `psg auth`
 
 
 To add schema per role permissions
+
 `psg roleSchema`
