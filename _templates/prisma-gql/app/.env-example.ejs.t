@@ -3,7 +3,7 @@ to: <%= name %>/.env-example
 ---
 
 API_SECRET=<%= appName %>Secret
-ADMIN_SECRET=<%= appName %>aDMINSecret
+ADMIN_SECRET=<%= appName %>AdminSecret
 DATABASE_URL=postgres://username:password@host:5432/db_name?connection_limit=20
 
 API_URL=http://localhost:3000
