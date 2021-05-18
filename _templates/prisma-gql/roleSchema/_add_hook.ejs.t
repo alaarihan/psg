@@ -18,7 +18,6 @@ skip_if: "{ getUserRoleSchema }"
             .catch((err) => {
               console.log(err)
             })
-          if (!perms) throw new Error("perms couldn't be loaded by Prisma")
           const roleSchema = getUserRoleSchema(schemaWithMiddlewares, perms)
           ctx.app.graphql.replaceSchema(roleSchema)
         } else {
