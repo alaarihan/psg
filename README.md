@@ -4,8 +4,11 @@ This is hygen based generator to generate graphql schema from prisma client mode
 
 # How to install
 `git clone git@github.com:alaarihan/psg.git`
+
 `cd psg`
+
 `npm install . -g`
+
 
 # How to use
 To create new app
