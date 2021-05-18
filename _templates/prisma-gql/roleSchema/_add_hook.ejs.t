@@ -10,10 +10,6 @@ skip_if: "{ getUserRoleSchema }"
     async function (_schema, _source, ctx: AppContext) {
       try {
         const userRole = ctx.user?.role
-        
-        if (!userRole){
-          ctx.app.graphql.replaceSchema(authSchema)
-        }
         else if (userRole !== 'ADMIN') {
           const perms = await ctx.prisma.permission
             .findMany({
@@ -33,4 +29,3 @@ skip_if: "{ getUserRoleSchema }"
       }
     },
   )
-  
