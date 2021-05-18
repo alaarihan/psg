@@ -2,7 +2,7 @@
 
 This is hygen based generator to generate graphql schema from prisma client models + create app with fastify to serve the schema.
 
-# How to install
+# How to install it
 `git clone git@github.com:alaarihan/psg.git`
 
 `cd psg`
@@ -14,12 +14,12 @@ This is hygen based generator to generate graphql schema from prisma client mode
 `npm install . -g`
 
 
-# How to use
+# How to use it
 To create a new app
 
 `psg app APP_NAME`
 
-After you answer to the prompt questions do the following 
+After you answer the prompt questions do the following 
 
 `cd APP_NAME`
 
@@ -33,7 +33,7 @@ To generate all models (This will auto generate the inputs also )
 `psg model all`
 
 
-to generate specific part of all models (type, queries, mutations, subscriptions)
+To generate specific part of all models (type, queries, mutations, subscriptions)
 
 `psg model:type all`
 
@@ -66,6 +66,6 @@ To add basic auth
 `psg auth`
 
 
-To add schema per role permissions
+To add filtering the schema per role permissions
 
 `psg roleSchema`
