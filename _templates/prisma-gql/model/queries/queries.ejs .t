@@ -7,11 +7,11 @@ import {
   GraphQLList,
   GraphQLNonNull
 } from 'graphql'
-import { <%= name %> } from './type'
+import { <%= name %>, Aggregate<%= name %> } from './type'
 import { <%= name %>WhereUniqueInput, <%= name %>WhereInput, <%= name %>OrderByInput} from '../inputs'
 import { <%= name %>ScalarFieldEnum } from '../enums'
 export const <%= h.changeCase.camel(name) %>Queries = {
-  <%= h.changeCase.camel(name) %>: {
+  findUnique<%= name %>: {
     type: <%= name %>,
     args: {
       where: { type: new GraphQLNonNull(<%= name %>WhereUniqueInput) },
@@ -34,7 +34,7 @@ export const <%= h.changeCase.camel(name) %>Queries = {
       return ctx.prisma.<%= h.changeCase.camel(name) %>.findFirst(args as any)
     },
   },
-  <%= h.inflection.pluralize(h.changeCase.camel(name)) %>: {
+  findMany<%= name %>: {
     type: new GraphQLNonNull(new GraphQLList(new GraphQLNonNull(<%= name %>))),
     args: {
       where: { type: <%= name %>WhereInput },
@@ -48,7 +48,7 @@ export const <%= h.changeCase.camel(name) %>Queries = {
       return ctx.prisma.<%= h.changeCase.camel(name) %>.findMany(args as any)
     },
   },
-  <%= h.inflection.pluralize(h.changeCase.camel(name)) %>Count: {
+  count<%= name %>: {
     type: new GraphQLNonNull(GraphQLInt),
     args: {
       where: { type: <%= name %>WhereInput },
@@ -60,6 +60,19 @@ export const <%= h.changeCase.camel(name) %>Queries = {
     },
     async resolve(_root, args, ctx) {
       return ctx.prisma.<%= h.changeCase.camel(name) %>.count(args as any)
+    },
+  },
+  aggregate<%= name %>: {
+    type: new GraphQLNonNull(Aggregate<%= name %>),
+    args: {
+      where: { type: <%= name %>WhereInput },
+      orderBy: { type: new GraphQLList(<%= name %>OrderByInput) },
+      cursor: { type: <%= name %>WhereUniqueInput},
+      skip: { type: GraphQLInt },
+      take: { type: GraphQLInt },
+    },
+    async resolve(_root, args, ctx) {
+      return ctx.prisma.<%= h.changeCase.camel(name) %>.aggregate(args as any)
     },
   },
 }

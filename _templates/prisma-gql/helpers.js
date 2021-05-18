@@ -1,15 +1,15 @@
 const path = require('path')
-const PrismaClientPath = path.join(
-  process.cwd(),
-  'node_modules/@prisma/client',
-)
+const PrismaClientPath = path.join(process.cwd(), 'node_modules/@prisma/client')
 const options = require('./options')
 
 const { dmmf } = require(PrismaClientPath)
 
 module.exports = {
   options,
-  inputs: dmmf.schema.inputObjectTypes.prisma, //.filter(item => item.name.startsWith(args.name))
+  inputs: dmmf.schema.inputObjectTypes.prisma,
+  outputTypes: dmmf.schema.outputObjectTypes.prisma.filter(
+    (item) => !['Query', 'Mutation'].includes(item.name),
+  ),
   Enums: dmmf.schema.enumTypes.model
     ? [...dmmf.schema.enumTypes.model, ...dmmf.schema.enumTypes.prisma]
     : dmmf.schema.enumTypes.prisma,
@@ -31,11 +31,15 @@ module.exports = {
       } else {
         newField = item.inputTypes[0]
       }
+
       field = newField
       field.isRequired =
         item.isRequired !== undefined ? item.isRequired : undefined
       field.isNullable =
         item.isNullable !== undefined ? item.isNullable : undefined
+    } else if (item.outputType && typeof item.outputType === 'object') {
+      field = item.outputType
+      field.isRequired = item.isRequired
     } else {
       field = item
     }

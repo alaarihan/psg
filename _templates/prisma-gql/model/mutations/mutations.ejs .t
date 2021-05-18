@@ -12,7 +12,7 @@ import { AffectedRowsOutput } from '../types'
 import { <%= name %>CreateInput, <%= name %>UpdateInput, <%= name %>WhereUniqueInput, <%= name %>WhereInput, <%= name %>UpdateManyMutationInput, <%= name %>CreateManyInput } from '../inputs'
 
 export const <%= h.changeCase.camel(name) %>Mutations = {
-  create<%= name %>: {
+  createOne<%= name %>: {
     type: new GraphQLNonNull(<%= name %>),
     args: {
       data: { type: new GraphQLNonNull(<%= name %>CreateInput) },
@@ -21,7 +21,7 @@ export const <%= h.changeCase.camel(name) %>Mutations = {
       return ctx.prisma.<%= h.changeCase.camel(name) %>.create(args as any)
     },
   },
-  update<%= name %>: {
+  updateOne<%= name %>: {
     type: new GraphQLNonNull(<%= name %>),
     args: {
       where: { type: new GraphQLNonNull(<%= name %>WhereUniqueInput) },
@@ -31,7 +31,7 @@ export const <%= h.changeCase.camel(name) %>Mutations = {
       return ctx.prisma.<%= h.changeCase.camel(name) %>.update(args as any)
     },
   },
-  delete<%= name %>: {
+  deleteOne<%= name %>: {
     type: <%= name %>,
     args: {
       where: { type: new GraphQLNonNull(<%= name %>WhereUniqueInput) },
@@ -40,7 +40,7 @@ export const <%= h.changeCase.camel(name) %>Mutations = {
       return ctx.prisma.<%= h.changeCase.camel(name) %>.delete(args as any)
     },
   },
-  upsert<%= name %>: {
+  upsertOne<%= name %>: {
     type: new GraphQLNonNull(<%= name %>),
     args: {
       where: { type: new GraphQLNonNull(<%= name %>WhereUniqueInput) },

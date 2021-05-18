@@ -6,15 +6,12 @@ sh: "<%= !noPrettier ? `npm run prettier` : '' %>"
 
 import {
   GraphQLString,
-  GraphQLID,
   GraphQLInt,
   GraphQLBoolean,
   GraphQLFloat,
   GraphQLList,
   GraphQLNonNull,
-  GraphQLObjectType,
-  GraphQLInputObjectType,
-  GraphQLSchema
+  GraphQLObjectType
 } from 'graphql'
 import { GraphQLDateTime,  GraphQLJSON } from 'graphql-scalars'
 <%_
@@ -32,6 +29,10 @@ if(inputsToImport && inputsToImport.length){
 }
 inputsImports = [...new Set(inputsImports)];
 enumsImports = [...new Set(enumsImports)];
+
+// Output types (Aggregate && GroupBy)
+const types = [name, `Aggregate${name}`]
+outputs = outputTypes.filter(type => types.some(item => type.name.startsWith(item)))
 -%>
 <%_ if(modelImports && modelImports.length > 0){ -%>
 import { <%= modelImports.toString() %> } from '../types'
@@ -60,3 +61,14 @@ export const <%= name %> = new GraphQLObjectType({
     <% }) %>
   }),
 })
+
+<% outputs.forEach(function(output){ -%> 
+export const <%= output.name %> = new GraphQLObjectType({
+  name: '<%= output.name %>',
+  fields:  () => ({
+    <% output.fields.forEach(function(field){ -%>
+    <%= field.name %>: { type: <%- getGqlType(field) %> },
+    <% }); %>
+  })
+});
+<% }); %>
