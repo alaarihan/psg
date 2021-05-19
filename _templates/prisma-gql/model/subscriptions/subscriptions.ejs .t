@@ -20,7 +20,11 @@ export const <%= name %>Subscription = new GraphQLObjectType({
 })
 export const <%= h.changeCase.camel(name) %>Subscriptions = {
   <%= h.changeCase.camel(name) %>: {
-    extensions: { model:  '<%= name %>' },
+    extensions: { 
+      model:  '<%= name %>',
+      permType: 'READ',
+      extraPerm: 'SUBSCRIPTIONS'
+    },
     type: new GraphQLNonNull(<%= name %>Subscription),
     args: {
       where: { type: <%= name %>WhereInput },

@@ -13,7 +13,10 @@ import { <%= name %>CreateInput, <%= name %>UpdateInput, <%= name %>WhereUniqueI
 
 export const <%= h.changeCase.camel(name) %>Mutations = {
   createOne<%= name %>: {
-    extensions: { model:  '<%= name %>' },
+    extensions: { 
+      model:  '<%= name %>',
+      permType: 'CREATE'
+    },
     type: new GraphQLNonNull(<%= name %>),
     args: {
       data: { type: new GraphQLNonNull(<%= name %>CreateInput) },
@@ -23,7 +26,10 @@ export const <%= h.changeCase.camel(name) %>Mutations = {
     },
   },
   updateOne<%= name %>: {
-    extensions: { model:  '<%= name %>' },
+    extensions: { 
+      model:  '<%= name %>',
+      permType: 'UPDATE'
+    },
     type: new GraphQLNonNull(<%= name %>),
     args: {
       where: { type: new GraphQLNonNull(<%= name %>WhereUniqueInput) },
@@ -34,7 +40,10 @@ export const <%= h.changeCase.camel(name) %>Mutations = {
     },
   },
   deleteOne<%= name %>: {
-    extensions: { model:  '<%= name %>' },
+     extensions: { 
+      model:  '<%= name %>',
+      permType: 'DELETE'
+    },
     type: <%= name %>,
     args: {
       where: { type: new GraphQLNonNull(<%= name %>WhereUniqueInput) },
@@ -44,7 +53,10 @@ export const <%= h.changeCase.camel(name) %>Mutations = {
     },
   },
   upsertOne<%= name %>: {
-    extensions: { model:  '<%= name %>' },
+     extensions: { 
+      model:  '<%= name %>',
+      permType: 'UPSERT'
+    },
     type: new GraphQLNonNull(<%= name %>),
     args: {
       where: { type: new GraphQLNonNull(<%= name %>WhereUniqueInput) },
@@ -56,7 +68,11 @@ export const <%= h.changeCase.camel(name) %>Mutations = {
     },
   },
   createMany<%= name %>: {
-    extensions: { model:  '<%= name %>' },
+     extensions: { 
+      model:  '<%= name %>',
+      permType: 'CREATE',
+      extraPerm: 'CREATE_MANY'
+    },
     type: new GraphQLNonNull(AffectedRowsOutput),
     args: {
       data: { type: new GraphQLNonNull(new GraphQLList(new GraphQLNonNull(<%= name %>CreateManyInput))) },
@@ -67,7 +83,11 @@ export const <%= h.changeCase.camel(name) %>Mutations = {
     },
   },
   updateMany<%= name %>: {
-    extensions: { model:  '<%= name %>' },
+    extensions: { 
+      model:  '<%= name %>',
+      permType: 'UPDATE',
+      extraPerm: 'UPDATE_MANY'
+    },
     type: new GraphQLNonNull(AffectedRowsOutput),
     args: {
       where: { type: new GraphQLNonNull(<%= name %>WhereInput) },
@@ -78,7 +98,11 @@ export const <%= h.changeCase.camel(name) %>Mutations = {
     },
   },
   deleteMany<%= name %>: {
-    extensions: { model:  '<%= name %>' },
+    extensions: { 
+      model:  '<%= name %>',
+      permType: 'DELETE',
+      extraPerm: 'DELETE_MANY'
+    },
     type: new GraphQLNonNull(AffectedRowsOutput),
     args: {
       where: { type: new GraphQLNonNull(<%= name %>WhereInput) },
