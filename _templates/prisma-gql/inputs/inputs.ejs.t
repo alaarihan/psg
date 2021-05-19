@@ -5,16 +5,12 @@ force: true
 
 import {
   GraphQLString,
-  GraphQLID,
   GraphQLInt,
   GraphQLBoolean,
   GraphQLFloat,
   GraphQLList,
   GraphQLNonNull,
-  GraphQLObjectType,
   GraphQLInputObjectType,
-  GraphQLInputType,
-  GraphQLSchema
 } from 'graphql'
 import { GraphQLDateTime, GraphQLJSON } from 'graphql-scalars';
 <% const importEnums = Enums.map(item => item.name) %>
