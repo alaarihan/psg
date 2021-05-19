@@ -17,7 +17,7 @@ unless_exists: true
     "build": "npm -s run clean && tsc",
     "generate:prisma": "prisma generate",
     "create-migration": "prisma migrate dev",
-    "db-push": "prisma db push --preview-feature",
+    "db-push": "prisma db push",
     "db-pull": "prisma db pull",
     "prettier": "prettier --write src"
   },
