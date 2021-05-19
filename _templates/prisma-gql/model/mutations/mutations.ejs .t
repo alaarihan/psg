@@ -15,6 +15,7 @@ export const <%= h.changeCase.camel(name) %>Mutations = {
   createOne<%= name %>: {
     extensions: { 
       model:  '<%= name %>',
+      op: 'createOne',
       permType: 'CREATE'
     },
     type: new GraphQLNonNull(<%= name %>),
@@ -28,6 +29,7 @@ export const <%= h.changeCase.camel(name) %>Mutations = {
   updateOne<%= name %>: {
     extensions: { 
       model:  '<%= name %>',
+      op: 'updateOne',
       permType: 'UPDATE'
     },
     type: new GraphQLNonNull(<%= name %>),
@@ -42,6 +44,7 @@ export const <%= h.changeCase.camel(name) %>Mutations = {
   deleteOne<%= name %>: {
      extensions: { 
       model:  '<%= name %>',
+      op: 'deleteOne',
       permType: 'DELETE'
     },
     type: <%= name %>,
@@ -55,6 +58,7 @@ export const <%= h.changeCase.camel(name) %>Mutations = {
   upsertOne<%= name %>: {
      extensions: { 
       model:  '<%= name %>',
+      op: 'upsertOne',
       permType: 'UPSERT'
     },
     type: new GraphQLNonNull(<%= name %>),
@@ -70,8 +74,8 @@ export const <%= h.changeCase.camel(name) %>Mutations = {
   createMany<%= name %>: {
      extensions: { 
       model:  '<%= name %>',
-      permType: 'CREATE',
-      extraPerm: 'CREATE_MANY'
+      op: 'createMany',
+      permType: 'CREATE'
     },
     type: new GraphQLNonNull(AffectedRowsOutput),
     args: {
@@ -85,8 +89,8 @@ export const <%= h.changeCase.camel(name) %>Mutations = {
   updateMany<%= name %>: {
     extensions: { 
       model:  '<%= name %>',
-      permType: 'UPDATE',
-      extraPerm: 'UPDATE_MANY'
+      op: 'updateMany',
+      permType: 'UPDATE'
     },
     type: new GraphQLNonNull(AffectedRowsOutput),
     args: {
@@ -100,8 +104,8 @@ export const <%= h.changeCase.camel(name) %>Mutations = {
   deleteMany<%= name %>: {
     extensions: { 
       model:  '<%= name %>',
-      permType: 'DELETE',
-      extraPerm: 'DELETE_MANY'
+      op: 'deleteMany',
+      permType: 'DELETE'
     },
     type: new GraphQLNonNull(AffectedRowsOutput),
     args: {

@@ -14,6 +14,7 @@ export const <%= h.changeCase.camel(name) %>Queries = {
   findUnique<%= name %>: {
     extensions: { 
       model:  '<%= name %>',
+      op: 'findUnique',
       permType: 'READ'
     },
     type: <%= name %>,
@@ -27,6 +28,7 @@ export const <%= h.changeCase.camel(name) %>Queries = {
   findFirst<%= name %>: {
     extensions: { 
       model:  '<%= name %>',
+      op: 'findFirst',
       permType: 'READ'
     },
     type: <%= name %>,
@@ -45,8 +47,8 @@ export const <%= h.changeCase.camel(name) %>Queries = {
   findMany<%= name %>: {
     extensions: { 
       model:  '<%= name %>',
-      permType: 'READ',
-      extraPerm: 'FIND_MANY'
+      op: 'findMany',
+      permType: 'READ'
     },
     type: new GraphQLNonNull(new GraphQLList(new GraphQLNonNull(<%= name %>))),
     args: {
@@ -64,8 +66,8 @@ export const <%= h.changeCase.camel(name) %>Queries = {
   count<%= name %>: {
     extensions: { 
       model:  '<%= name %>',
-      permType: 'READ',
-      extraPerm: 'COUNT'
+      op: 'count',
+      permType: 'READ'
     },
     type: new GraphQLNonNull(GraphQLInt),
     args: {
@@ -83,8 +85,8 @@ export const <%= h.changeCase.camel(name) %>Queries = {
   aggregate<%= name %>: {
     extensions: { 
       model:  '<%= name %>',
-      permType: 'READ',
-      extraPerm: 'AGGREGATE'
+      op: 'aggregate',
+      permType: 'READ'
     },
     type: new GraphQLNonNull(Aggregate<%= name %>),
     args: {

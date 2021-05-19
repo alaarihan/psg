@@ -22,8 +22,8 @@ export const <%= h.changeCase.camel(name) %>Subscriptions = {
   <%= h.changeCase.camel(name) %>: {
     extensions: { 
       model:  '<%= name %>',
-      permType: 'READ',
-      extraPerm: 'SUBSCRIPTIONS'
+      op: 'Subscription',
+      permType: 'READ'
     },
     type: new GraphQLNonNull(<%= name %>Subscription),
     args: {
