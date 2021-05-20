@@ -23,7 +23,7 @@ unless_exists: true
   },
   "dependencies": {
     "@paljs/plugins": "^3.2.0",
-    "@prisma/client": "^2.22.1",
+    "@prisma/client": "^2.23.0",
     "dotenv": "^9.0.2",
     "fastify": "^3.15.1",
     "graphql": "^15.5.0",
@@ -35,7 +35,7 @@ unless_exists: true
   "devDependencies": {
     "@types/node": "^15.3.0",
     "prettier": "^2.3.0",
-    "prisma": "2.22.1",
+    "prisma": "2.23.0",
     "ts-node": "^9.1.1",
     "ts-node-dev": "^1.1.6",
     "typescript": "^4.2.4"

@@ -1,4 +1,4 @@
 ---
-sh: "cd <%= cwd %> && npm install graphql-tools"
+sh: "cd <%= cwd %> && npm install graphql-tools pluralize"
 ---
 
