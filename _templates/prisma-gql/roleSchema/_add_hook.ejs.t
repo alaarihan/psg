@@ -10,7 +10,7 @@ skip_if: "{ getUserRoleSchema }"
     async function (_schema, _source, ctx: AppContext) {
       try {
         const userRole = ctx.user?.role
-        else if (userRole !== 'ADMIN') {
+        if (userRole !== 'ADMIN') {
           const perms = await ctx.prisma.permission
             .findMany({
               where: { role: { equals: userRole } },
