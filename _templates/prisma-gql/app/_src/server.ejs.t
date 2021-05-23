@@ -2,7 +2,6 @@
 to: <%= name %>/src/server.ts
 ---
 
-require('dotenv').config()
 import fastify from 'fastify'
 import mercurius from 'mercurius'
 import { schema as mainSchema } from './schema'
@@ -18,6 +17,10 @@ const schemaWithMiddlewares = applyMiddleware(
 const app = fastify()
 
 async function start() {
+   app.register(require('fastify-cors'), {
+    // put your cors options here
+  })
+
   app.register(mercurius, {
     schema: schemaWithMiddlewares,
     context: createContext,

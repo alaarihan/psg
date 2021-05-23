@@ -17,7 +17,7 @@ export interface AppContext extends MercuriusContext {
   user: any
 }
 
-function getUserFromHeader(req) {
+function getUserFromHeaders(req) {
   let user
   const adminSecret = req.headers?.admin_secret
   if (adminSecret) {
@@ -45,6 +45,6 @@ function getUserFromHeader(req) {
 export function createContext(req, reply, ctx): Context {
   return {
     prisma,
-    user: getUserFromHeader(req),
+    user: getUserFromHeaders(req),
   }
 }

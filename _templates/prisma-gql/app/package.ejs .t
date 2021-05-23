@@ -11,8 +11,8 @@ unless_exists: true
   "private": true,
   "description": "<%= appDescription %>",
   "scripts": {
-    "start": "node dist/server",
-    "dev": "ts-node-dev --no-notify --respawn --transpile-only --exit-child src/server",
+    "start": "node -r dotenv/config dist/server",
+    "dev": "ts-node-dev -r dotenv/config --no-notify --respawn --transpile-only --exit-child src/server",
     "clean": "rm -rf dist",
     "build": "npm -s run clean && tsc",
     "generate:prisma": "prisma generate",
@@ -22,10 +22,11 @@ unless_exists: true
     "prettier": "prettier --write src"
   },
   "dependencies": {
-    "@paljs/plugins": "^3.2.0",
+    "@paljs/plugins": "^3.3.3",
     "@prisma/client": "^2.23.0",
     "dotenv": "^9.0.2",
     "fastify": "^3.15.1",
+    "fastify-cors": "^6.0.1",
     "graphql": "^15.5.0",
     "graphql-middleware": "^6.0.10",
     "graphql-scalars": "^1.9.3",
@@ -33,7 +34,7 @@ unless_exists: true
     "mercurius": "^7.6.1"
   },
   "devDependencies": {
-    "@types/node": "^15.3.0",
+    "@types/node": "^15.6.0",
     "prettier": "^2.3.0",
     "prisma": "2.23.0",
     "ts-node": "^9.1.1",
