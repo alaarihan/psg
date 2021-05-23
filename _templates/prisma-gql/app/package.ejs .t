@@ -24,7 +24,7 @@ unless_exists: true
   "dependencies": {
     "@paljs/plugins": "^3.3.3",
     "@prisma/client": "^2.23.0",
-    "dotenv": "^9.0.2",
+    "dotenv": "^10.0.0",
     "fastify": "^3.15.1",
     "fastify-cors": "^6.0.1",
     "graphql": "^15.5.0",
