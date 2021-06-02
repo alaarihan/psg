@@ -15,31 +15,32 @@ unless_exists: true
     "dev": "ts-node-dev -r dotenv/config --no-notify --respawn --transpile-only --exit-child src/server",
     "clean": "rm -rf dist",
     "build": "npm -s run clean && tsc",
-    "generate:prisma": "prisma generate",
-    "create-migration": "prisma migrate dev",
-    "db-push": "prisma db push",
-    "db-pull": "prisma db pull",
+    "prisma:generate": "prisma generate",
+    "prisma:studio": "prisma studio",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:db-push": "prisma db push",
+    "prisma:db-pull": "prisma db pull",
     "prettier": "prettier --write src"
   },
   "dependencies": {
     "@paljs/plugins": "^3.3.3",
-    "@prisma/client": "^2.23.0",
+    "@prisma/client": "^2.24.0",
     "dotenv": "^10.0.0",
-    "fastify": "^3.15.1",
+    "fastify": "^3.17.0",
     "fastify-cors": "^6.0.1",
     "graphql": "^15.5.0",
     "graphql-middleware": "^6.0.10",
     "graphql-scalars": "^1.9.3",
     "jsonwebtoken": "^8.5.1",
-    "mercurius": "^7.6.1"
+    "mercurius": "^7.7.0"
   },
   "devDependencies": {
-    "@types/node": "^15.6.0",
+    "@types/node": "^15.6.2",
     "prettier": "^2.3.0",
-    "prisma": "2.23.0",
-    "ts-node": "^9.1.1",
+    "prisma": "2.24.0",
+    "ts-node": "^10.0.0",
     "ts-node-dev": "^1.1.6",
-    "typescript": "^4.2.4"
+    "typescript": "^4.3.2"
   },
   "prettier": {
     "singleQuote": true,
