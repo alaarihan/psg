@@ -6,3 +6,4 @@ skip_if: "jwtAuth,"
 ---
 
 jwtAuth,
+acl,
