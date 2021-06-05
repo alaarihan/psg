@@ -27,6 +27,7 @@ unless_exists: true
     "@prisma/client": "^2.24.1",
     "dotenv": "^10.0.0",
     "fastify": "^3.17.0",
+    "fastify-cookie": "^5.3.1",
     "fastify-cors": "^6.0.1",
     "graphql": "^15.5.0",
     "graphql-middleware": "^6.0.10",

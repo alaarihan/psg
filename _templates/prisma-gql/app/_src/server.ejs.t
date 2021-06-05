@@ -17,9 +17,10 @@ const schemaWithMiddlewares = applyMiddleware(
 const app = fastify()
 
 async function start() {
-   app.register(require('fastify-cors'), {
+  app.register(require('fastify-cors'), {
     // put your cors options here
   })
+  app.register(require('fastify-cookie'))
 
   app.register(mercurius, {
     schema: schemaWithMiddlewares,
