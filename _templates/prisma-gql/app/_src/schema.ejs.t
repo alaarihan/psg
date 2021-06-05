@@ -2,7 +2,7 @@
 to: <%= name %>/src/schema.ts
 ---
 
-import { GraphQLSchema, GraphQLObjectType } from 'graphql'
+import { GraphQLSchema, GraphQLObjectType, GraphQLString } from 'graphql'
 
 export const schema = new GraphQLSchema({
   query: new GraphQLObjectType({
