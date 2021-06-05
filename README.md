@@ -61,11 +61,6 @@ To generate inputs
 `psg inputs`
 
 
-To add basic auth
+To add basic auth and filtering the schema per user permissions
 
 `psg auth`
-
-
-To add filtering the schema per role permissions
-
-`psg roleSchema`

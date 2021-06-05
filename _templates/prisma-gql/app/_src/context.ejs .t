@@ -1,3 +1,7 @@
+---
+to: <%= name %>/src/context.ts
+---
+
 import { PrismaClient } from '@prisma/client'
 import { MercuriusContext } from 'mercurius'
 

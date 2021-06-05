@@ -2,7 +2,7 @@
 inject: true
 to: <%= options.dir %>/server.ts
 after: "await app.ready()"
-skip_if: "{ getUserRoleSchema }"
+skip_if: "{ getUserSchema }"
 ---
 
   app.graphql.addHook(
@@ -18,7 +18,7 @@ skip_if: "{ getUserRoleSchema }"
             .catch((err) => {
               console.log(err)
             })
-          const roleSchema = getUserRoleSchema(schemaWithMiddlewares, perms)
+          const roleSchema = getUserSchema(schemaWithMiddlewares, perms)
           ctx.app.graphql.replaceSchema(roleSchema)
         } else {
           ctx.app.graphql.replaceSchema(schemaWithMiddlewares)
