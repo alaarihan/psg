@@ -18,8 +18,8 @@ skip_if: "{ getUserSchema }"
             .catch((err) => {
               console.log(err)
             })
-          const roleSchema = getUserSchema(schemaWithMiddlewares, perms)
-          ctx.app.graphql.replaceSchema(roleSchema)
+          const userSchema = getUserSchema(schemaWithMiddlewares, perms)
+          ctx.app.graphql.replaceSchema(userSchema)
         } else {
           ctx.app.graphql.replaceSchema(schemaWithMiddlewares)
         }

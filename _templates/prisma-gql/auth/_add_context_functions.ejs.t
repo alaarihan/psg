@@ -2,7 +2,7 @@
 inject: true
 to: <%= options.dir %>/context.ts
 after: "MercuriusContext"
-skip_if: "getUserFromHeaders"
+skip_if: "getUserFromCookies"
 ---
 
 import { verify, sign } from 'jsonwebtoken'
