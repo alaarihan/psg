@@ -58,7 +58,14 @@ async function getUserFromCookies(req, reply) {
       refreshUser = await prisma.user.findUnique({ where: { id: refreshUser.id } })
       if (refreshUser) {
         user = { id: refreshUser.id, role: refreshUser.role }
-        setTokenCookie(user, reply)
+        if(reply){
+          setTokenCookie(user, reply)
+        }
+      } else {
+        if(reply){
+          reply.setCookie('refresh_token', '')
+        }
+        throw new Error('User not exist!')
       }
     }
     catch (err) {

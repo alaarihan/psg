@@ -16,7 +16,7 @@ export interface AppContext extends MercuriusContext {
   user: any
 }
 
-export async function createContext(req, reply, ctx): Promise<Context> {
+export async function createContext(req, reply?): Promise<Context> {
   return {
     prisma,
     // add_context_items

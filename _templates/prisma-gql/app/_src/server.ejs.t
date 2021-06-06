@@ -27,7 +27,9 @@ async function start() {
     context: createContext,
     graphiql: 'playground',
     subscription: {
-      context: createContext,
+       context: (_, req) => {
+        return createContext(req)
+      },
     },
     allowBatchedQueries: true,
   })
