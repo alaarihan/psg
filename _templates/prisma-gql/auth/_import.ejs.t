@@ -5,4 +5,4 @@ after: "graphql-middleware"
 skip_if: "{ jwtAuth, acl, getUserSchema }"
 ---
 
-import { jwtAuth, acl, getUserSchema, rolesPerms } from './auth'
+import { jwtAuth, acl, getUserSchema, getRolePerms } from './auth'
