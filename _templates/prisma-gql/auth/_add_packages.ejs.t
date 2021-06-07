@@ -1,4 +1,4 @@
 ---
-sh: "cd <%= cwd %> && npm install ejs email-templates bcrypt change-case flat graphql-tools pluralize"
+sh: "cd <%= cwd %> && npm install ejs email-templates bcrypt change-case flat graphql-tools pluralize node-cache"
 ---
 

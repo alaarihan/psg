@@ -2,10 +2,11 @@
 to: <%= name %>/src/context.ts
 ---
 
+import { prisma } from './prisma'
 import { PrismaClient } from '@prisma/client'
 import { MercuriusContext } from 'mercurius'
 
-export const prisma = new PrismaClient()
+
 export interface Context {
   prisma: PrismaClient
   user: any
