@@ -2,7 +2,7 @@
 inject: true
 to: <%= options.dir %>/prisma.ts
 after: "add_prisma_middlewares"
-skip_if: "rolesPerms.flushAll()"
+skip_if: "rolePermsCache.flushAll()"
 ---
 
 prisma.$use(async (params, next) => {
@@ -17,7 +17,7 @@ prisma.$use(async (params, next) => {
             'deleteMany',
         ].includes(params.action)
     ) {
-        rolesPerms.flushAll()
+        rolePermsCache.flushAll()
     }
     return next(params)
 })

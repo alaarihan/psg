@@ -5,4 +5,4 @@ after: "{ PrismaClient }"
 skip_if: "{ rolesPerms }"
 ---
 
-import { rolesPerms } from './auth/src/common/permsCache'
+import { rolePermsCache } from './auth/src/common/rolePerms'
