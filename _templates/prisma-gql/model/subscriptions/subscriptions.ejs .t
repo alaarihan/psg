@@ -6,6 +6,7 @@ import { GraphQLNonNull, GraphQLObjectType } from 'graphql'
 import { <%= name %> } from './type'
 import { <%= name %>WhereInput } from '../inputs'
 import { SubscriptionOpernation } from '../enums'
+import { subscribeFunction } from '../../common/subscribeFunc'
 
 export const <%= name %>Subscription = new GraphQLObjectType({
   name: '<%= name %>Subscription',
@@ -29,13 +30,7 @@ export const <%= h.changeCase.camel(name) %>Subscriptions = {
     args: {
       where: { type: <%= name %>WhereInput },
     },
-    async subscribe(_root, _args, { pubsub }) {
-      return pubsub.subscribe(
-        '<%= name.toUpperCase() %>_CREATED',
-        '<%= name.toUpperCase() %>_UPDATED',
-        '<%= name.toUpperCase() %>_DELETED',
-      )
-    },
+    subscribe: subscribeFunction,
     resolve: async (root, args, ctx) => {
       let data
       if(root.operation === '<%= name.toUpperCase() %>_DELETED'){
