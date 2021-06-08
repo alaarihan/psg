@@ -3,6 +3,7 @@ to: <%= options.dir %>/common/subscribeFunc.ts
 ---
 
 const { withFilter } = require('mercurius')
+import { camelCase } from 'change-case'
 import { checkModelItemsExist, mergeCheckWithWhere } from '../auth'
 
 export const subscribeFunction = withFilter(
@@ -17,12 +18,24 @@ export const subscribeFunction = withFilter(
   },
   async (payload, args, ctx, info) => {
     const ext = info.parentType.getFields()[info.fieldName].extensions
-    if (ctx.user?.role === 'ADMIN' || !ext.op) return true
-    let where = { id: payload.id }
+    if (!ext.op) return true
+    const item = { id: payload.id }
+    const where = { id: { equals: payload.id } }
     if (args.where) {
-      where = mergeCheckWithWhere(where, args.where)
+      const argsWhere = mergeCheckWithWhere(where, args.where)
+      const item = await ctx.prisma[camelCase(ext.model)]
+        .count({
+          where: argsWhere,
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+      if (!item) return false
     }
-    const itemExists = await checkModelItemsExist(where, ctx, ext, false)
-    return itemExists
+    if (ctx.user?.role !== 'ADMIN') {
+      const itemExists = await checkModelItemsExist(item, ctx, ext, false)
+      return itemExists
+    }
+    return true
   },
 )
