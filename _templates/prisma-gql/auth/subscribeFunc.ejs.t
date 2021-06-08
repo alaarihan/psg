@@ -1,5 +1,5 @@
 ---
-to: <%= name %>/src/common/subscribeFunc.ts
+to: <%= options.dir %>/common/subscribeFunc.ts
 ---
 
 const { withFilter } = require('mercurius')
