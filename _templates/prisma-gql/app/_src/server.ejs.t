@@ -7,11 +7,12 @@ import mercurius from 'mercurius'
 import { schema as mainSchema } from './schema'
 import { createContext, AppContext } from './context'
 import { applyMiddleware } from 'graphql-middleware'
-import { prismaSelect } from './middlewares/prismaSelect'
+import { prismaSelect, subMiddleware } from './middlewares'
 
 const schemaWithMiddlewares = applyMiddleware(
   mainSchema, 
   prismaSelect,
+  subMiddleware,
   // add_middlewares
 )
 const app = fastify()
