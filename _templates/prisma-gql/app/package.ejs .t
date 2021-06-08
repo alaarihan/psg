@@ -25,6 +25,7 @@ unless_exists: true
   "dependencies": {
     "@paljs/plugins": "^3.3.3",
     "@prisma/client": "^2.24.1",
+    "change-case": "^4.1.2",
     "dotenv": "^10.0.0",
     "fastify": "^3.17.0",
     "fastify-cookie": "^5.3.1",
