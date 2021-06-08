@@ -14,7 +14,7 @@ export const subMiddleware = async (resolve, root, args, ctx, info) => {
         const eventName = `${info.returnType.ofType.name}_${op}d`
         ctx.pubsub.publish({
           topic: eventName.toUpperCase(),
-          payload: { id: result.id, operation: op.toUpperCase() },
+          payload: { id: result.id, action: op.toUpperCase() },
         })
       }
       return result

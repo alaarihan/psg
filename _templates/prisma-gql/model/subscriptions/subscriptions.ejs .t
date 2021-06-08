@@ -5,14 +5,14 @@ to: <%= options.dir %>/models/<%= name %>/subscriptions.ts
 import { GraphQLNonNull, GraphQLObjectType } from 'graphql'
 import { <%= name %> } from './type'
 import { <%= name %>WhereInput } from '../inputs'
-import { SubscriptionOpernation } from '../enums'
+import { SubscriptionAction } from '../enums'
 import { subscribeFunction } from '../../common/subscribeFunc'
 
 export const <%= name %>Subscription = new GraphQLObjectType({
   name: '<%= name %>Subscription',
   fields: () => ({
-    operation: {
-      type: new GraphQLNonNull(SubscriptionOpernation),
+    action: {
+      type: new GraphQLNonNull(SubscriptionAction),
     },
     data: {
       type: new GraphQLNonNull(<%= name %>),
@@ -33,7 +33,7 @@ export const <%= h.changeCase.camel(name) %>Subscriptions = {
     subscribe: subscribeFunction,
     resolve: async (root, args, ctx) => {
       let data
-      if(root.operation === '<%= name.toUpperCase() %>_DELETED'){
+      if(root.action === '<%= name.toUpperCase() %>_DELETED'){
         data = { id: root.id }
       } else {
           data = await ctx.prisma.<%= h.changeCase.camel(name) %>.findUnique({
@@ -43,7 +43,7 @@ export const <%= h.changeCase.camel(name) %>Subscriptions = {
       }
       const result = {
         data,
-        operation: root.operation,
+        action: root.action,
       }
       return result
     },

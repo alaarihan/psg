@@ -36,8 +36,8 @@ unless_exists: true
     "mercurius": "^7.7.0"
   },
   "devDependencies": {
-    "@types/node": "^15.6.2",
-    "prettier": "^2.3.0",
+    "@types/node": "^15.12.2",
+    "prettier": "^2.3.1",
     "prisma": "2.24.1",
     "ts-node": "^10.0.0",
     "ts-node-dev": "^1.1.6",

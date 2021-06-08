@@ -5,8 +5,8 @@ force: true
 
 import { GraphQLEnumType } from 'graphql'
 
-export const SubscriptionOpernation = new GraphQLEnumType({
-  name: 'SubscriptionOpernation',
+export const SubscriptionAction = new GraphQLEnumType({
+  name: 'SubscriptionAction',
   values: {
     CREATE: { value: 'CREATE' },
     UPDATE: { value: 'UPDATE' },
