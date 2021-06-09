@@ -7,4 +7,5 @@ skip_if: "me: {"
 
 me: {
   type: GraphQLString,
+  extensions: { allowRoles: ['UNAUTHORIZED'] },
 },
