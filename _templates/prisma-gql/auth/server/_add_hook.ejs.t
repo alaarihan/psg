@@ -10,9 +10,8 @@ skip_if: "{ getUserSchema }"
     async function (_schema, _source, ctx: AppContext) {
       try {
         if (ctx.user?.role !== 'ADMIN') {
-          const rolePerms = await getRolePerms(ctx.user.role)
-          const userSchema = getUserSchema(schemaWithMiddlewares, rolePerms)
-          ctx.app.graphql.replaceSchema(userSchema)
+          const roleSchema = await getRoleSchema(schemaWithMiddlewares, ctx.user.role)
+          ctx.app.graphql.replaceSchema(roleSchema)
         } else {
           ctx.app.graphql.replaceSchema(schemaWithMiddlewares)
         }
