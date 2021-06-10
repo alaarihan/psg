@@ -32,6 +32,7 @@ model Permission {
   type  PermissionType
   model String         @db.VarChar(100)
   def   Json?
+  @@unique([role,type,model])
 }
 
 model Post {
