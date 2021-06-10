@@ -9,3 +9,4 @@ me: {
   type: GraphQLString,
   extensions: { allowRoles: ['UNAUTHORIZED'] },
 },
+...authQueries,
