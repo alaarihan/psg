@@ -18,6 +18,7 @@ prisma.$use(async (params, next) => {
         ].includes(params.action)
     ) {
         rolePermsCache.flushAll()
+        roleSchemaCache.flushAll()
     }
     return next(params)
 })
