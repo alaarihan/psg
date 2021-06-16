@@ -9,7 +9,7 @@ skip_if: "{ getUserSchema }"
     'preParsing',
     async function (_schema, _source, ctx: AppContext) {
       try {
-        if (ctx.user?.role !== 'ADMIN') {
+        if (ctx.user?.role !== 'ROOT') {
           const roleSchema = await getRoleSchema(schemaWithMiddlewares, ctx.user.role)
           ctx.app.graphql.replaceSchema(roleSchema)
         } else {

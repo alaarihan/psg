@@ -57,6 +57,7 @@ model Category {
 }
 
 enum UserRole {
+  ROOT
   ADMIN
   USER
   BLOCKED

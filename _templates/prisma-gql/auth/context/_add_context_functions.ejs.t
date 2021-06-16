@@ -29,14 +29,14 @@ export function setTokenCookie(user, reply) {
 
 async function getUserFromCookies(req, reply) {
   let user
-  const adminSecret = req.cookies?.admin_secret
-  if (adminSecret) {
-    if (adminSecret === process.env.ADMIN_SECRET) {
-      const userRole = req.headers?.user_role || 'ADMIN'
+  const rootSecret = req.cookies?.root_secret
+  if (rootSecret) {
+    if (rootSecret === process.env.ROOT_SECRET) {
+      const userRole = req.headers?.user_role || 'ROOT'
       const userId = req.headers?.user_id
       return { id: userId, role: userRole }
     } else {
-      throw new Error('Invalid admin secret!')
+      throw new Error('Invalid root secret!')
     }
   }
   const refresh_token = req.cookies?.refresh_token
