@@ -14,12 +14,12 @@ datasource db {
 model User {
   id                Int       @id @default(autoincrement())
   email             String    @unique @db.VarChar(100)
-  firstName         String? @db.VarChar(100)
-  lastName          String? @db.VarChar(100)
+  firstName         String?   @db.VarChar(100)
+  lastName          String?   @db.VarChar(100)
   password          String
   role              UserRole  @default(UNVERIFIED)
   verificationToken String?
-  country           String? @db.VarChar(150)
+  country           String?   @db.VarChar(150)
   dateOfBirth       DateTime?
   createdAt         DateTime  @default(now())
   updatedAt         DateTime  @updatedAt
@@ -27,18 +27,20 @@ model User {
 }
 
 model Permission {
-  id    Int            @id @default(autoincrement())
-  role  UserRole
-  type  PermissionType
-  model String         @db.VarChar(100)
-  def   Json?
-  @@unique([role,type,model])
+  id     Int            @id @default(autoincrement())
+  active Boolean        @default(true)
+  role   UserRole
+  type   PermissionType
+  model  String         @db.VarChar(100)
+  def    Json?
+
+  @@unique([role, type, model])
 }
 
 model Post {
   id         Int        @id @default(autoincrement())
   authorId   Int?
-  name       String @db.VarChar(255)
+  name       String     @db.VarChar(255)
   content    String?
   createdAt  DateTime   @default(now())
   updatedAt  DateTime   @updatedAt
@@ -48,23 +50,23 @@ model Post {
 
 model Category {
   id        Int      @id @default(autoincrement())
-  name      String @db.VarChar(200)
+  name      String   @db.VarChar(200)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   posts     Post[]
 }
 
 enum UserRole {
-  USER
   ADMIN
+  USER
   BLOCKED
   UNVERIFIED
   UNAUTHORIZED
 }
 
 enum PermissionType {
-  CREATE
   READ
+  CREATE
   UPDATE
   DELETE
 }
