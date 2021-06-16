@@ -2,8 +2,7 @@
 inject: true
 to: <%= options.dir %>/prisma.ts
 after: "{ PrismaClient }"
-skip_if: "{ rolePermsCache }"
+skip_if: "{ rolePermsCache, roleSchemaCache }"
 ---
 
-import { rolePermsCache } from './auth/src/common/rolePerms'
-import { roleSchemaCache } from './auth/src/common/roleSchema'
+import { rolePermsCache, roleSchemaCache } from './auth'
