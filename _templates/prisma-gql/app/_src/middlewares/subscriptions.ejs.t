@@ -2,7 +2,7 @@
 to: <%= name %>/src/middlewares/subscriptions.ts
 ---
 
-export const subMiddleware = async (resolve, root, args, ctx, info) => {
+export const subscriptionsMiddleware = async (resolve, root, args, ctx, info) => {
   if (info.path.typename === 'Mutation') {
     const ext = info.parentType.getFields()[info.fieldName].extensions
 
