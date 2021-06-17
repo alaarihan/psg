@@ -2,7 +2,7 @@
 to: <%= name %>/.env-example
 ---
 
-API_SECRET=<%= appName %>Secret
+JWT_SECRET=<%= appName %>Secret
 ROOT_SECRET=<%= appName %>RootSecret
 UNAUTHORIZED_ROLE=UNAUTHORIZED
 DATABASE_URL=postgres://username:password@host:5432/db_name?connection_limit=20

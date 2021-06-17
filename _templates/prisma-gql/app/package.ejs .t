@@ -24,7 +24,7 @@ unless_exists: true
   },
   "dependencies": {
     "@paljs/plugins": "^3.3.3",
-    "@prisma/client": "^2.24.1",
+    "@prisma/client": "^2.25.0",
     "change-case": "^4.1.2",
     "dotenv": "^10.0.0",
     "fastify": "^3.17.0",
@@ -32,14 +32,14 @@ unless_exists: true
     "fastify-cors": "^6.0.1",
     "graphql": "^15.5.0",
     "graphql-middleware": "^6.0.10",
-    "graphql-scalars": "^1.9.3",
+    "graphql-scalars": "^1.10.0",
     "jsonwebtoken": "^8.5.1",
-    "mercurius": "^7.7.0"
+    "mercurius": "^7.9.0"
   },
   "devDependencies": {
     "@types/node": "^15.12.2",
     "prettier": "^2.3.1",
-    "prisma": "2.24.1",
+    "prisma": "2.25.0",
     "ts-node": "^10.0.0",
     "ts-node-dev": "^1.1.6",
     "typescript": "^4.3.2"

@@ -10,7 +10,7 @@ import { verify, sign } from 'jsonwebtoken'
 export function setTokenCookie(user, reply) {
   const token = sign(
     { id: user.id, role: user.role },
-    process.env.API_SECRET,
+    process.env.JWT_SECRET,
     {
       expiresIn: '6m',
     },
@@ -44,7 +44,7 @@ async function getUserFromCookies(req, reply) {
   if (authToken?.length) {
     const token = authToken.replace('Bearer ', '')
     try {
-      user = verify(token, process.env.API_SECRET)
+      user = verify(token, process.env.JWT_SECRET)
     } catch (err) {
       throw new Error('Invalid JWT token!')
     }
@@ -54,7 +54,7 @@ async function getUserFromCookies(req, reply) {
 
   if (!authToken?.length && refresh_token?.length) {
     try {
-      let refreshUser = verify(refresh_token, process.env.API_SECRET)
+      let refreshUser = verify(refresh_token, process.env.JWT_SECRET)
       refreshUser = await prisma.user.findUnique({ where: { id: refreshUser.id } })
       if (refreshUser) {
         user = { id: refreshUser.id, role: refreshUser.role }
