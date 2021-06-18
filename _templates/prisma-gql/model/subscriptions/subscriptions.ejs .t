@@ -4,7 +4,7 @@ to: <%= options.dir %>/models/<%= name %>/subscriptions.ts
 
 import { GraphQLNonNull, GraphQLObjectType } from 'graphql'
 import { <%= name %> } from './type'
-import { <%= name %>WhereInput } from '../inputs'
+import { <%= name %>WhereInput, EnumPermissionTypeFilter } from '../inputs'
 import { SubscriptionAction } from '../enums'
 import { subscribeFunction } from '../../common/subscribeFunc'
 
@@ -29,6 +29,7 @@ export const <%= h.changeCase.camel(name) %>Subscriptions = {
     type: new GraphQLNonNull(<%= name %>Subscription),
     args: {
       where: { type: <%= name %>WhereInput },
+      action: { type: EnumPermissionTypeFilter },
     },
     subscribe: subscribeFunction,
     resolve: async (root, args, ctx) => {
