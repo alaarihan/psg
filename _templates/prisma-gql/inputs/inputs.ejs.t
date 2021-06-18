@@ -16,6 +16,21 @@ import { GraphQLDateTime, GraphQLJSON } from 'graphql-scalars';
 <% const importEnums = Enums.map(item => item.name) %>
 import { <%= importEnums.toString() %> } from './enums'
 
+export const SimpleStringFilter = new GraphQLInputObjectType({
+  name: 'SimpleStringFilter',
+  fields: () => ({
+    equals: {
+      type: GraphQLString,
+    },
+    in: {
+      type: new GraphQLList(new GraphQLNonNull(GraphQLString)),
+    },
+    notIn: {
+      type: new GraphQLList(new GraphQLNonNull(GraphQLString)),
+    },
+  }),
+})
+
 <% inputs.forEach(function(input){ -%> 
 export const <%= input.name %> = new GraphQLInputObjectType({
   name: '<%= input.name %>',
