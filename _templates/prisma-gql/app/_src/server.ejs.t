@@ -19,7 +19,8 @@ const app = fastify()
 
 async function start() {
   app.register(require('fastify-cors'), {
-    // put your cors options here
+    origin: true,
+    credentials: true,
   })
   app.register(require('fastify-cookie'))
 
