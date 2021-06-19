@@ -2,7 +2,7 @@
 inject: true
 to: <%= options.dir %>/server.ts
 after: "await app.ready()"
-skip_if: "getRoleSchemaCache("
+skip_if: "await getRoleSchemaCache"
 ---
 
   app.graphql.addHook(
