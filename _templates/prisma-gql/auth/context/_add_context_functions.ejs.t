@@ -32,8 +32,8 @@ async function getUserFromCookies(req, reply) {
   const rootSecret = req.cookies?.root_secret
   if (rootSecret) {
     if (rootSecret === process.env.ROOT_SECRET) {
-      const userRole = req.headers?.user_role || 'ROOT'
-      const userId = req.headers?.user_id
+      const userRole = req.headers['user-role'] || 'ROOT'
+      const userId = req.headers['user-id']
       return { id: userId, role: userRole }
     } else {
       throw new Error('Invalid root secret!')
