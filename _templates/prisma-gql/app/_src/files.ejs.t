@@ -70,12 +70,12 @@ module.exports = function (fastify, opts, done) {
   })
 
   fastify.get('/file/*', async (req, reply) => {
-    if (req.params['*'])
+    if (!req.params['*'])
       throw reply.code(404).type('text/plain').send('Not found!')
     const pathParsed = path.parse(req.params['*'])
     if (
       req.query?.w &&
-      ['png', 'jpg', 'jpeg', 'gif', 'bmp', 'svg', 'tif', 'tiff'].includes(
+      ['png', 'jpg', 'jpeg', 'gif', 'bmp', 'svg', 'tif', 'tiff', 'webp'].includes(
         pathParsed?.ext.toLowerCase(),
       )
     ) {
