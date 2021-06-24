@@ -10,8 +10,6 @@ import { GetObjectCommand } from '@aws-sdk/client-s3'
 import sharp from 'sharp'
 import { Readable } from 'stream'
 import path from 'path'
-import { getUserFromRequest } from './common/getUserFromRequest'
-import { getRolePerms } from './auth'
 
 module.exports = function (fastify, opts, done) {
   fastify.post('/file', async (req, reply) => {
