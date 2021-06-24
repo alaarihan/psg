@@ -22,7 +22,7 @@ export function setTokenCookie(user, reply) {
 
 export async function getUserFromRequest(req, reply) {
     let user
-    const rootSecret = req.cookies?.root_secret
+    const rootSecret = req.cookies?.root_secret || req.headers['root-secret']
     if (rootSecret) {
       if (rootSecret === process.env.ROOT_SECRET) {
         const userRole = req.headers['user-role'] || 'ROOT'
