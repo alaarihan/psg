@@ -11,6 +11,22 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum UserRole {
+  ROOT
+  ADMIN
+  USER
+  BLOCKED
+  UNVERIFIED
+  UNAUTHORIZED
+}
+
+enum PermissionType {
+  READ
+  CREATE
+  UPDATE
+  DELETE
+}
+
 model User {
   id                Int       @id @default(autoincrement())
   email             String    @unique @db.VarChar(100)
@@ -40,8 +56,10 @@ model Permission {
 model Post {
   id         Int        @id @default(autoincrement())
   authorId   Int?
+  imageId    Int?
   name       String     @db.VarChar(255)
   content    String?
+  image      File?      @relation(fields: [imageId], references: [id])
   createdAt  DateTime   @default(now())
   updatedAt  DateTime   @updatedAt
   author     User?      @relation(fields: [authorId], references: [id])
@@ -56,18 +74,17 @@ model Category {
   posts     Post[]
 }
 
-enum UserRole {
-  ROOT
-  ADMIN
-  USER
-  BLOCKED
-  UNVERIFIED
-  UNAUTHORIZED
-}
+model File {
+  id        Int      @id @default(autoincrement())
+  name      String
+  bucket    String
+  mimeType  String
+  path      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  meta      Json?
+  tags      String[]
+  Post Post[]
 
-enum PermissionType {
-  READ
-  CREATE
-  UPDATE
-  DELETE
+  @@unique([bucket, path])
 }

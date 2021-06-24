@@ -14,3 +14,9 @@ MAIL_HOST=smtp.gmail.com
 MAIL_PORT=587
 MAIL_USERNAME=<%= appName %>@gmail.com
 MAIL_PASSWORD=password
+
+S3_ENDPOINT=http://127.0.0.1:9000
+S3_KEY=key
+S3_SECRET=secret
+S3_REGION=us-east-1
+S3_BUCKET_NAME=bucket

@@ -23,6 +23,9 @@ async function start() {
     credentials: true,
   })
   app.register(require('fastify-cookie'))
+  app.register(require('fastify-multipart'))
+  
+  app.register(require('./files'))
 
   app.register(mercurius, {
     schema: schemaWithMiddlewares,
