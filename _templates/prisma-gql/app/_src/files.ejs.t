@@ -75,9 +75,17 @@ module.exports = function (fastify, opts, done) {
     const pathParsed = path.parse(req.params['*'])
     if (
       req.query?.w &&
-      ['png', 'jpg', 'jpeg', 'gif', 'bmp', 'svg', 'tif', 'tiff', 'webp'].includes(
-        pathParsed?.ext.toLowerCase(),
-      )
+      [
+        '.png',
+        '.jpg',
+        '.jpeg',
+        '.gif',
+        '.bmp',
+        '.svg',
+        '.webp',
+        '.tif',
+        '.tiff',
+      ].includes(pathParsed?.ext.toLowerCase())
     ) {
       const object = await getImageSize(req, reply)
       reply.type(object.ContentType)
