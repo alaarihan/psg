@@ -6,10 +6,6 @@ import { HeadObjectCommand } from '@aws-sdk/client-s3'
 import path from 'path'
 import { s3 } from './s3'
 
-import { HeadObjectCommand } from '@aws-sdk/client-s3'
-import path from 'path'
-import { s3 } from './s3'
-
 export const uniqueFilePath = async (filePath, index = 0) => {
   const pathParsed = path.parse(filePath)
   let ext = pathParsed.ext
