@@ -25,7 +25,15 @@ After you answer the prompt questions do the following
 
 `npm install`
 
-And don't forget to rename `.env-example` to `.env` and update the file values
+And don't forget to rename `.env-example` to `.env` and update the file values, 
+
+Change prisma schema as you want from here `/prisma/schema.prisma` then run the following:
+
+`npm run prisma:generate`
+
+`npm run prisma:db-push`
+
+*Note*: Don't change the following models because they have used in the auth and permissions system `Permission, UserRole, PermissionType, User` however you can change anything in the other models and in the User model just keep these three fields `role, email, password, verificationToken` in the User model.
 
 
 To generate all models (This will auto generate the inputs also )
