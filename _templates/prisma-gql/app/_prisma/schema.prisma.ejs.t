@@ -27,6 +27,17 @@ enum PermissionType {
   DELETE
 }
 
+model Permission {
+  id     Int            @id @default(autoincrement())
+  active Boolean        @default(true)
+  role   UserRole
+  type   PermissionType
+  model  String         @db.VarChar(100)
+  def    Json?
+
+  @@unique([role, type, model])
+}
+
 model User {
   id                Int       @id @default(autoincrement())
   email             String    @unique @db.VarChar(100)
@@ -40,17 +51,6 @@ model User {
   createdAt         DateTime  @default(now())
   updatedAt         DateTime  @updatedAt
   posts             Post[]
-}
-
-model Permission {
-  id     Int            @id @default(autoincrement())
-  active Boolean        @default(true)
-  role   UserRole
-  type   PermissionType
-  model  String         @db.VarChar(100)
-  def    Json?
-
-  @@unique([role, type, model])
 }
 
 model Post {
