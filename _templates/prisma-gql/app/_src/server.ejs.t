@@ -46,7 +46,7 @@ async function start() {
   app
     .listen(3000)
     .then(() =>
-      console.log(`🚀 Server ready at http://localhost:3000/playground`),
+      console.log(`🚀 Server ready at ${process.env.API_URL}/playground`),
     )
     .catch((err) => {
       console.log(err)
