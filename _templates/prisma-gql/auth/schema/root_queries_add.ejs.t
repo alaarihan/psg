@@ -2,11 +2,7 @@
 inject: true
 to: <%= options.dir %>/schema.ts
 after: "merge_the_query_fields_here"
-skip_if: "me: {"
+skip_if: "...authQueries"
 ---
 
-me: {
-  type: GraphQLString,
-  extensions: { allowRoles: ['UNAUTHORIZED'] },
-},
 ...authQueries,
