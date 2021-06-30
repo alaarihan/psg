@@ -1,10 +1,10 @@
 {
   "name": "prisma-gql-schema-gen",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "dist/index.js",
   "license": "MIT",
   "private": true,
-  "description": "Prisma GraphQL Schema generator",
+  "description": "Prisma GraphQL Schema Generator",
   "scripts": {
     "clean": "rm -rf dist",
     "build": "npm -s run clean && tsc",
@@ -12,15 +12,15 @@
   },
   "dependencies": {
     "enquirer": "^2.3.6",
-    "execa": "^5.1.0",
+    "execa": "^5.1.1",
     "hygen": "^6.1.0"
   },
   "devDependencies": {
-    "@types/node": "^15.12.0",
-    "prettier": "^2.3.0",
+    "@types/node": "^15.12.5",
+    "prettier": "^2.3.2",
     "ts-node": "^10.0.0",
-    "ts-node-dev": "^1.1.6",
-    "typescript": "^4.3.2"
+    "ts-node-dev": "^1.1.7",
+    "typescript": "^4.3.4"
   },
   "prettier": {
     "singleQuote": true,
@@ -30,6 +30,6 @@
   "bin": {
     "psg": "./bin/cli.js"
   },
-  "repository": "https://github.com/alaarihan/prisma-gql-generator",
+  "repository": "https://github.com/alaarihan/psg",
   "author": "Alaa Rihan"
 }
