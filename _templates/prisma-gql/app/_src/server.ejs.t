@@ -4,10 +4,11 @@ to: <%= name %>/src/server.ts
 
 import fastify from 'fastify'
 import mercurius from 'mercurius'
+import { applyMiddleware } from 'graphql-middleware'
 import { schema as mainSchema } from './schema'
 import { createContext, AppContext } from './context'
-import { applyMiddleware } from 'graphql-middleware'
 import { prismaSelect, subscriptionsMiddleware } from './middlewares'
+import { NoIntrospection } from './common/noIntrospection'
 
 const schemaWithMiddlewares = applyMiddleware(
   mainSchema, 
@@ -37,6 +38,7 @@ async function start() {
       },
     },
     allowBatchedQueries: true,
+    validationRules: [NoIntrospection],
   })
 
   await app.ready()
