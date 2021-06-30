@@ -55,14 +55,14 @@ model User {
 
 model Post {
   id         Int        @id @default(autoincrement())
-  authorId   Int?
+  authorId   Int
   imageId    Int?
   name       String     @db.VarChar(255)
   content    String?
   image      File?      @relation(fields: [imageId], references: [id])
   createdAt  DateTime   @default(now())
   updatedAt  DateTime   @updatedAt
-  author     User?      @relation(fields: [authorId], references: [id])
+  author     User      @relation(fields: [authorId], references: [id])
   categories Category[]
 }
 
