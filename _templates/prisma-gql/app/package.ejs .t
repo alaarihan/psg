@@ -25,14 +25,14 @@ unless_exists: true
   "dependencies": {
     "@aws-sdk/client-s3": "^3.18.0",
     "@aws-sdk/lib-storage": "^3.18.0",
-    "@paljs/plugins": "^3.4.0",
-    "@prisma/client": "^2.25.0",
+    "@paljs/plugins": "^3.6.0",
+    "@prisma/client": "^2.26.0",
     "change-case": "^4.1.2",
     "dotenv": "^10.0.0",
-    "fastify": "^3.18.0",
+    "fastify": "^3.18.1",
     "fastify-cookie": "^5.3.1",
     "fastify-cors": "^6.0.1",
-    "fastify-multipart": "^4.0.6",
+    "fastify-multipart": "^4.0.7",
     "graphql": "^15.5.1",
     "graphql-middleware": "^6.0.10",
     "graphql-scalars": "^1.10.0",
@@ -43,9 +43,9 @@ unless_exists: true
   "devDependencies": {
     "@types/node": "^15.12.4",
     "prettier": "^2.3.1",
-    "prisma": "2.25.0",
+    "prisma": "2.26.0",
     "ts-node": "^10.0.0",
-    "ts-node-dev": "^1.1.6",
+    "ts-node-dev": "^1.1.7",
     "typescript": "^4.3.4"
   },
   "prettier": {
