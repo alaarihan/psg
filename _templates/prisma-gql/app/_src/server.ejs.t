@@ -31,7 +31,7 @@ async function start() {
   app.register(mercurius, {
     schema: schemaWithMiddlewares,
     context: createContext,
-    graphiql: 'playground',
+    graphiql: true,
     subscription: {
        context: (_, req) => {
         return createContext(req)
@@ -46,7 +46,7 @@ async function start() {
   app
     .listen(3000)
     .then(() =>
-      console.log(`🚀 Server ready at ${process.env.API_URL}/playground`),
+      console.log(`🚀 Server ready at ${process.env.API_URL}/graphiql`),
     )
     .catch((err) => {
       console.log(err)
