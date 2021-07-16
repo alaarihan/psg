@@ -2,20 +2,30 @@
 to: <%= name %>/src/common/noIntrospection.ts
 ---
 
-import { GraphQLError } from 'graphql'
-/**
- * No introspection: __schema and __type are disallowed in the query.
- */
-export function NoIntrospection(context) {
+import {
+  ASTVisitor,
+  FieldNode,
+  getNamedType,
+  GraphQLError,
+  isIntrospectionType,
+  ValidationContext,
+} from 'graphql'
+
+export function NoIntrospection(
+  context: ValidationContext,
+): ASTVisitor {
   return {
-    Field(node) {
-      if (
-        process.env.INTROSPECTIONS !== 'on' &&
-        (node.name.value === '__schema' || node.name.value === '__type')
-      ) {
-        context.reportError(
-          new GraphQLError('GraphQL introspection is not allowed!', [node]),
-        )
+    Field(node: FieldNode) {
+      if (process.env.INTROSPECTIONS !== 'on') {
+        const type = getNamedType(context.getType())
+        if (type && isIntrospectionType(type)) {
+          context.reportError(
+            new GraphQLError(
+              `GraphQL introspection has been disabled, but the requested query contained the field "${node.name.value}".`,
+              node,
+            ),
+          )
+        }
       }
     },
   }
