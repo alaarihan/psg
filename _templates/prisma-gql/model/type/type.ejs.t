@@ -15,7 +15,7 @@ import {
 } from 'graphql'
 import { GraphQLDateTime,  GraphQLJSON } from 'graphql-scalars'
 <%_
-const modelsToImport = model.fields.filter(field => field.kind === 'object')
+const modelsToImport = model.fields.filter(field => field.kind === 'object' && field.type !== model.name)
 let modelImports = modelsToImport && modelsToImport.length > 0 ? modelsToImport.map(item => item.type) : null
 modelImports = [...new Set(modelImports)];
 const enumsToImport = model.fields.filter(field => field.kind === 'enum')
