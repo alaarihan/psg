@@ -31,8 +31,28 @@ inputsImports = [...new Set(inputsImports)];
 enumsImports = [...new Set(enumsImports)];
 
 // Output types (Aggregate && GroupBy)
-const types = [name, `Aggregate${name}`]
-outputs = outputTypes.filter(type => types.some(item => type.name.startsWith(item)))
+const types = [name, `Aggregate${name}`];
+let outputs = outputTypes.filter((type) =>
+  types.some((item) => type.name.startsWith(item))
+);
+
+const otherTypes = models
+  .map((model) => model.name)
+  .filter((model) => model !== name && model.startsWith(name));
+console.log("otherTypes", otherTypes);
+
+/* Don't include other models when they start with the same letters as the current model name */
+if (otherTypes && otherTypes.length) {
+  outputs = outputs.filter(
+    (type) =>
+      !otherTypes.some(
+        (item) =>
+          item.length > name.length &&
+          (type.name.startsWith(item) ||
+            type.name.startsWith(`Aggregate${item}`))
+      )
+  );
+}
 -%>
 <%_ if(modelImports && modelImports.length > 0){ -%>
 import { <%= modelImports.toString() %> } from '../types'
