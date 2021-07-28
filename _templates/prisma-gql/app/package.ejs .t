@@ -26,7 +26,7 @@ unless_exists: true
     "@aws-sdk/client-s3": "^3.23.0",
     "@aws-sdk/lib-storage": "^3.23.0",
     "@paljs/plugins": "^3.6.1",
-    "@prisma/client": "^2.27.0",
+    "@prisma/client": "^2.28.0",
     "change-case": "^4.1.2",
     "dotenv": "^10.0.0",
     "fastify": "^3.19.2",
@@ -41,9 +41,9 @@ unless_exists: true
     "sharp": "^0.28.3"
   },
   "devDependencies": {
-    "@types/node": "^16.4.3",
+    "@types/node": "^16.4.4",
     "prettier": "^2.3.1",
-    "prisma": "2.27.0",
+    "prisma": "2.28.0",
     "ts-node": "^10.1.0",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.3.5"
