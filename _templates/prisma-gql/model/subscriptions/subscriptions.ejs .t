@@ -7,6 +7,7 @@ import { <%= name %> } from './type'
 import { <%= name %>WhereInput, EnumPermissionTypeFilter } from '../inputs'
 import { SubscriptionAction } from '../enums'
 import { subscribeFunction } from '../../common/subscribeFunc'
+import { AppContext } from '../../context'
 
 export const <%= name %>Subscription = new GraphQLObjectType({
   name: '<%= name %>Subscription',
@@ -32,7 +33,7 @@ export const <%= h.changeCase.camel(name) %>Subscriptions = {
       action: { type: EnumPermissionTypeFilter },
     },
     subscribe: subscribeFunction,
-    resolve: async (root, args, ctx) => {
+    resolve: async (root, args, ctx: AppContext) => {
       let data
       if(root.action === '<%= name.toUpperCase() %>_DELETED'){
         data = { id: root.id }

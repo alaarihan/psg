@@ -10,7 +10,7 @@ import {
 import { <%= name %> } from './type'
 import { AffectedRowsOutput } from '../types'
 import { <%= name %>CreateInput, <%= name %>UpdateInput, <%= name %>WhereUniqueInput, <%= name %>WhereInput, <%= name %>UpdateManyMutationInput, <%= name %>CreateManyInput } from '../inputs'
-
+import { AppContext } from '../../context'
 export const <%= h.changeCase.camel(name) %>Mutations = {
   createOne<%= name %>: {
     extensions: { 
@@ -22,8 +22,8 @@ export const <%= h.changeCase.camel(name) %>Mutations = {
     args: {
       data: { type: new GraphQLNonNull(<%= name %>CreateInput) },
     },
-    async resolve(_root, args, ctx) {
-      return ctx.prisma.<%= h.changeCase.camel(name) %>.create(args as any)
+    async resolve(_root, args, ctx: AppContext) {
+      return ctx.prisma.<%= h.changeCase.camel(name) %>.create(args)
     },
   },
   updateOne<%= name %>: {
@@ -37,8 +37,8 @@ export const <%= h.changeCase.camel(name) %>Mutations = {
       where: { type: new GraphQLNonNull(<%= name %>WhereUniqueInput) },
       data: { type: new GraphQLNonNull(<%= name %>UpdateInput) },
     },
-    async resolve(_root, args, ctx) {
-      return ctx.prisma.<%= h.changeCase.camel(name) %>.update(args as any)
+    async resolve(_root, args, ctx: AppContext) {
+      return ctx.prisma.<%= h.changeCase.camel(name) %>.update(args)
     },
   },
   deleteOne<%= name %>: {
@@ -51,8 +51,8 @@ export const <%= h.changeCase.camel(name) %>Mutations = {
     args: {
       where: { type: new GraphQLNonNull(<%= name %>WhereUniqueInput) },
     },
-    async resolve(_root, args, ctx) {
-      return ctx.prisma.<%= h.changeCase.camel(name) %>.delete(args as any)
+    async resolve(_root, args, ctx: AppContext) {
+      return ctx.prisma.<%= h.changeCase.camel(name) %>.delete(args)
     },
   },
   upsertOne<%= name %>: {
@@ -67,8 +67,8 @@ export const <%= h.changeCase.camel(name) %>Mutations = {
       create: { type: new GraphQLNonNull(<%= name %>CreateInput) },
       update: { type: new GraphQLNonNull(<%= name %>UpdateInput) },
     },
-    async resolve(_root, args, ctx) {
-      return ctx.prisma.<%= h.changeCase.camel(name) %>.upsert(args as any)
+    async resolve(_root, args, ctx: AppContext) {
+      return ctx.prisma.<%= h.changeCase.camel(name) %>.upsert(args)
     },
   },
   createMany<%= name %>: {
@@ -82,8 +82,8 @@ export const <%= h.changeCase.camel(name) %>Mutations = {
       data: { type: new GraphQLNonNull(new GraphQLList(new GraphQLNonNull(<%= name %>CreateManyInput))) },
       skipDuplicates:  { type: GraphQLBoolean }
     },
-    async resolve(_root, args, ctx) {
-      return ctx.prisma.<%= h.changeCase.camel(name) %>.createMany(args as any)
+    async resolve(_root, args, ctx: AppContext) {
+      return ctx.prisma.<%= h.changeCase.camel(name) %>.createMany(args)
     },
   },
   updateMany<%= name %>: {
@@ -97,8 +97,8 @@ export const <%= h.changeCase.camel(name) %>Mutations = {
       where: { type: new GraphQLNonNull(<%= name %>WhereInput) },
       data: { type: new GraphQLNonNull(<%= name %>UpdateManyMutationInput) },
     },
-    async resolve(_root, args, ctx) {
-      return ctx.prisma.<%= h.changeCase.camel(name) %>.updateMany(args as any)
+    async resolve(_root, args, ctx: AppContext) {
+      return ctx.prisma.<%= h.changeCase.camel(name) %>.updateMany(args)
     },
   },
   deleteMany<%= name %>: {
@@ -111,8 +111,8 @@ export const <%= h.changeCase.camel(name) %>Mutations = {
     args: {
       where: { type: new GraphQLNonNull(<%= name %>WhereInput) },
     },
-    async resolve(_root, args, ctx) {
-      return ctx.prisma.<%= h.changeCase.camel(name) %>.deleteMany(args as any)
+    async resolve(_root, args, ctx: AppContext) {
+      return ctx.prisma.<%= h.changeCase.camel(name) %>.deleteMany(args)
     },
   },
 }

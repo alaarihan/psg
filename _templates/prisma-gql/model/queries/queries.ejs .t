@@ -10,6 +10,7 @@ import {
 import { <%= name %>, Aggregate<%= name %> } from './type'
 import { <%= name %>WhereUniqueInput, <%= name %>WhereInput, <%= name %>OrderByInput} from '../inputs'
 import { <%= name %>ScalarFieldEnum } from '../enums'
+import { AppContext } from '../../context'
 export const <%= h.changeCase.camel(name) %>Queries = {
   findUnique<%= name %>: {
     extensions: { 
@@ -21,8 +22,8 @@ export const <%= h.changeCase.camel(name) %>Queries = {
     args: {
       where: { type: new GraphQLNonNull(<%= name %>WhereUniqueInput) },
     },
-    async resolve(_root, args, ctx) {
-      return ctx.prisma.<%= h.changeCase.camel(name) %>.findUnique(args as any)
+    async resolve(_root, args, ctx: AppContext) {
+      return ctx.prisma.<%= h.changeCase.camel(name) %>.findUnique(args)
     },
   },
   findFirst<%= name %>: {
@@ -40,8 +41,8 @@ export const <%= h.changeCase.camel(name) %>Queries = {
       take: { type: GraphQLInt },
       distinct: { type: new GraphQLList(<%= name %>ScalarFieldEnum) },
     },
-    async resolve(_root, args, ctx) {
-      return ctx.prisma.<%= h.changeCase.camel(name) %>.findFirst(args as any)
+    async resolve(_root, args, ctx: AppContext) {
+      return ctx.prisma.<%= h.changeCase.camel(name) %>.findFirst(args)
     },
   },
   findMany<%= name %>: {
@@ -59,8 +60,8 @@ export const <%= h.changeCase.camel(name) %>Queries = {
       take: { type: GraphQLInt },
       distinct: { type: new GraphQLList(<%= name %>ScalarFieldEnum) },
     },
-    async resolve(_root, args, ctx) {
-      return ctx.prisma.<%= h.changeCase.camel(name) %>.findMany(args as any)
+    async resolve(_root, args, ctx: AppContext) {
+      return ctx.prisma.<%= h.changeCase.camel(name) %>.findMany(args)
     },
   },
   count<%= name %>: {
@@ -78,8 +79,8 @@ export const <%= h.changeCase.camel(name) %>Queries = {
       take: { type: GraphQLInt },
       distinct: { type: new GraphQLList(<%= name %>ScalarFieldEnum) },
     },
-    async resolve(_root, args, ctx) {
-      return ctx.prisma.<%= h.changeCase.camel(name) %>.count(args as any)
+    async resolve(_root, args, ctx: AppContext) {
+      return ctx.prisma.<%= h.changeCase.camel(name) %>.count(args)
     },
   },
   aggregate<%= name %>: {
@@ -96,8 +97,8 @@ export const <%= h.changeCase.camel(name) %>Queries = {
       skip: { type: GraphQLInt },
       take: { type: GraphQLInt },
     },
-    async resolve(_root, args, ctx) {
-      return ctx.prisma.<%= h.changeCase.camel(name) %>.aggregate(args as any)
+    async resolve(_root, args, ctx: AppContext) {
+      return ctx.prisma.<%= h.changeCase.camel(name) %>.aggregate(args)
     },
   },
 }
