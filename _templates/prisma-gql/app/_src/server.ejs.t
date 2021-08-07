@@ -44,7 +44,7 @@ async function start() {
   await app.ready()
 
   app
-    .listen(3000)
+    .listen(process.env.PORT || 3000)
     .then(() =>
       console.log(`🚀 Server ready at ${process.env.API_URL}/graphiql`),
     )

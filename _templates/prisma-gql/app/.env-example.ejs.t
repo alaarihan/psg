@@ -2,6 +2,7 @@
 to: <%= name %>/.env-example
 ---
 
+PORT=3000
 JWT_SECRET=<%= appName %>Secret
 ROOT_SECRET=<%= appName %>RootSecret
 UNAUTHORIZED_ROLE=UNAUTHORIZED
