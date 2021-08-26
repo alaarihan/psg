@@ -43,7 +43,7 @@ unless_exists: true
   "devDependencies": {
     "@types/node": "^16.7.2",
     "prettier": "^2.3.2",
-    "prisma": "2.30.0",
+    "prisma": "^2.30.0",
     "ts-node": "^10.2.1",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.3.5"
