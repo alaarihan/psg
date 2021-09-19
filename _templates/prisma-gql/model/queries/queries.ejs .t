@@ -8,7 +8,7 @@ import {
   GraphQLNonNull
 } from 'graphql'
 import { <%= name %>, Aggregate<%= name %> } from './type'
-import { <%= name %>WhereUniqueInput, <%= name %>WhereInput, <%= name %>OrderByInput} from '../inputs'
+import { <%= name %>WhereUniqueInput, <%= name %>WhereInput, <%= name %>OrderByWithRelationInput} from '../inputs'
 import { <%= name %>ScalarFieldEnum } from '../enums'
 import { AppContext } from '../../context'
 export const <%= h.changeCase.camel(name) %>Queries = {
@@ -35,7 +35,7 @@ export const <%= h.changeCase.camel(name) %>Queries = {
     type: <%= name %>,
     args: {
       where: { type: <%= name %>WhereInput },
-      orderBy: { type: new GraphQLList(<%= name %>OrderByInput) },
+      orderBy: { type: new GraphQLList(<%= name %>OrderByWithRelationInput) },
       cursor: { type: <%= name %>WhereUniqueInput},
       skip: { type: GraphQLInt },
       take: { type: GraphQLInt },
@@ -54,7 +54,7 @@ export const <%= h.changeCase.camel(name) %>Queries = {
     type: new GraphQLNonNull(new GraphQLList(new GraphQLNonNull(<%= name %>))),
     args: {
       where: { type: <%= name %>WhereInput },
-      orderBy: { type: new GraphQLList(<%= name %>OrderByInput) },
+      orderBy: { type: new GraphQLList(<%= name %>OrderByWithRelationInput) },
       cursor: { type: <%= name %>WhereUniqueInput},
       skip: { type: GraphQLInt },
       take: { type: GraphQLInt },
@@ -73,7 +73,7 @@ export const <%= h.changeCase.camel(name) %>Queries = {
     type: new GraphQLNonNull(GraphQLInt),
     args: {
       where: { type: <%= name %>WhereInput },
-      orderBy: { type: new GraphQLList(<%= name %>OrderByInput) },
+      orderBy: { type: new GraphQLList(<%= name %>OrderByWithRelationInput) },
       cursor: { type: <%= name %>WhereUniqueInput},
       skip: { type: GraphQLInt },
       take: { type: GraphQLInt },
@@ -92,7 +92,7 @@ export const <%= h.changeCase.camel(name) %>Queries = {
     type: new GraphQLNonNull(Aggregate<%= name %>),
     args: {
       where: { type: <%= name %>WhereInput },
-      orderBy: { type: new GraphQLList(<%= name %>OrderByInput) },
+      orderBy: { type: new GraphQLList(<%= name %>OrderByWithRelationInput) },
       cursor: { type: <%= name %>WhereUniqueInput},
       skip: { type: GraphQLInt },
       take: { type: GraphQLInt },
