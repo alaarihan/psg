@@ -23,7 +23,7 @@ let enumsImports = enumsToImport && enumsToImport.length > 0 ? enumsToImport.map
 
 const inputsToImport = model.fields.filter(field => field.kind === 'object' && field.isList )
 let inputsImports = []
-inputsToImport && inputsToImport.length > 0 ? inputsToImport.map(item => { inputsImports = [...inputsImports, ...[`${item.type}OrderByInput`, `${item.type}WhereInput`, `${item.type}WhereUniqueInput`]]; return item } ) : null
+inputsToImport && inputsToImport.length > 0 ? inputsToImport.map(item => { inputsImports = [...inputsImports, ...[`${item.type}OrderByWithRelationInput`, `${item.type}WhereInput`, `${item.type}WhereUniqueInput`]]; return item } ) : null
 if(inputsToImport && inputsToImport.length){
   inputsToImport.map(item => { enumsImports.push(`${item.type}ScalarFieldEnum`); return item })
 }
