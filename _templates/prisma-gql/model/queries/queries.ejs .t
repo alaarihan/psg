@@ -2,6 +2,14 @@
 to: <%= options.dir %>/models/<%= name %>/queries.ts
 ---
 
+<%_
+const findUniqueQuery = options.queryMap && options.queryMap.findUnique ? options.queryMap.findUnique(name) : `findUnique${name}`
+const findFirstQuery = options.queryMap && options.queryMap.findFirst ? options.queryMap.findFirst(name) : `findFirst${name}`
+const findManyQuery = options.queryMap && options.queryMap.findMany ? options.queryMap.findMany(name) : `findMany${name}`
+const countQuery = options.queryMap && options.queryMap.count ? options.queryMap.count(name) : `count${name}`
+const aggregateQuery = options.queryMap && options.queryMap.aggregate ? options.queryMap.aggregate(name) : `aggregate${name}`
+-%>
+
 import {
   GraphQLInt,
   GraphQLList,
@@ -12,7 +20,7 @@ import { <%= name %>WhereUniqueInput, <%= name %>WhereInput, <%= name %>OrderByW
 import { <%= name %>ScalarFieldEnum } from '../enums'
 import { AppContext } from '../../context'
 export const <%= h.changeCase.camel(name) %>Queries = {
-  findUnique<%= name %>: {
+  <%= findUniqueQuery %>: {
     extensions: { 
       model:  '<%= name %>',
       op: 'findUnique',
@@ -26,26 +34,7 @@ export const <%= h.changeCase.camel(name) %>Queries = {
       return ctx.prisma.<%= h.changeCase.camel(name) %>.findUnique(args)
     },
   },
-  findFirst<%= name %>: {
-    extensions: { 
-      model:  '<%= name %>',
-      op: 'findFirst',
-      permType: 'READ'
-    },
-    type: <%= name %>,
-    args: {
-      where: { type: <%= name %>WhereInput },
-      orderBy: { type: new GraphQLList(<%= name %>OrderByWithRelationInput) },
-      cursor: { type: <%= name %>WhereUniqueInput},
-      skip: { type: GraphQLInt },
-      take: { type: GraphQLInt },
-      distinct: { type: new GraphQLList(<%= name %>ScalarFieldEnum) },
-    },
-    async resolve(_root, args, ctx: AppContext) {
-      return ctx.prisma.<%= h.changeCase.camel(name) %>.findFirst(args)
-    },
-  },
-  findMany<%= name %>: {
+  <%= findManyQuery %>: {
     extensions: { 
       model:  '<%= name %>',
       op: 'findMany',
@@ -64,7 +53,26 @@ export const <%= h.changeCase.camel(name) %>Queries = {
       return ctx.prisma.<%= h.changeCase.camel(name) %>.findMany(args)
     },
   },
-  count<%= name %>: {
+  <%= findFirstQuery %>: {
+    extensions: { 
+      model:  '<%= name %>',
+      op: 'findFirst',
+      permType: 'READ'
+    },
+    type: <%= name %>,
+    args: {
+      where: { type: <%= name %>WhereInput },
+      orderBy: { type: new GraphQLList(<%= name %>OrderByWithRelationInput) },
+      cursor: { type: <%= name %>WhereUniqueInput},
+      skip: { type: GraphQLInt },
+      take: { type: GraphQLInt },
+      distinct: { type: new GraphQLList(<%= name %>ScalarFieldEnum) },
+    },
+    async resolve(_root, args, ctx: AppContext) {
+      return ctx.prisma.<%= h.changeCase.camel(name) %>.findFirst(args)
+    },
+  },
+  <%= countQuery %>: {
     extensions: { 
       model:  '<%= name %>',
       op: 'count',
@@ -83,7 +91,7 @@ export const <%= h.changeCase.camel(name) %>Queries = {
       return ctx.prisma.<%= h.changeCase.camel(name) %>.count(args)
     },
   },
-  aggregate<%= name %>: {
+  <%= aggregateQuery %>: {
     extensions: { 
       model:  '<%= name %>',
       op: 'aggregate',

@@ -35,7 +35,7 @@ unless_exists: true
     "fastify-multipart": "^5.1.0",
     "graphql": "^15.7.2",
     "graphql-middleware": "^6.1.11",
-    "graphql-scalars": "^1.12.0",
+    "graphql-scalars": "^1.13.1",
     "jsonwebtoken": "^8.5.1",
     "mercurius": "^8.8.0",
     "sharp": "^0.29.2"

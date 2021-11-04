@@ -2,6 +2,16 @@
 to: <%= options.dir %>/models/<%= name %>/mutations.ts
 ---
 
+<%_
+const createOneMutation = options.queryMap && options.queryMap.createOne ? options.queryMap.createOne(name) : `createOne${name}`
+const updateOneMutation = options.queryMap && options.queryMap.updateOne ? options.queryMap.updateOne(name) : `updateOne${name}`
+const deleteOneMutation = options.queryMap && options.queryMap.deleteOne ? options.queryMap.deleteOne(name) : `deleteOne${name}`
+const upsertOneMutation = options.queryMap && options.queryMap.upsertOne ? options.queryMap.upsertOne(name) : `upsertOne${name}`
+const createManyMutation = options.queryMap && options.queryMap.createMany ? options.queryMap.createMany(name) : `createMany${name}`
+const updateManyMutation = options.queryMap && options.queryMap.updateMany ? options.queryMap.updateMany(name) : `updateMany${name}`
+const deleteManyMutation = options.queryMap && options.queryMap.deleteMany ? options.queryMap.deleteMany(name) : `deleteMany${name}`
+-%>
+
 import {
   GraphQLBoolean,
   GraphQLNonNull,
@@ -11,8 +21,9 @@ import { <%= name %> } from './type'
 import { AffectedRowsOutput } from '../types'
 import { <%= name %>CreateInput, <%= name %>UpdateInput, <%= name %>WhereUniqueInput, <%= name %>WhereInput, <%= name %>UpdateManyMutationInput, <%= name %>CreateManyInput } from '../inputs'
 import { AppContext } from '../../context'
+
 export const <%= h.changeCase.camel(name) %>Mutations = {
-  createOne<%= name %>: {
+  <%= createOneMutation %>: {
     extensions: { 
       model:  '<%= name %>',
       op: 'createOne',
@@ -26,7 +37,7 @@ export const <%= h.changeCase.camel(name) %>Mutations = {
       return ctx.prisma.<%= h.changeCase.camel(name) %>.create(args)
     },
   },
-  updateOne<%= name %>: {
+  <%= updateOneMutation %>: {
     extensions: { 
       model:  '<%= name %>',
       op: 'updateOne',
@@ -41,7 +52,7 @@ export const <%= h.changeCase.camel(name) %>Mutations = {
       return ctx.prisma.<%= h.changeCase.camel(name) %>.update(args)
     },
   },
-  deleteOne<%= name %>: {
+  <%= deleteOneMutation %>: {
      extensions: { 
       model:  '<%= name %>',
       op: 'deleteOne',
@@ -55,7 +66,7 @@ export const <%= h.changeCase.camel(name) %>Mutations = {
       return ctx.prisma.<%= h.changeCase.camel(name) %>.delete(args)
     },
   },
-  upsertOne<%= name %>: {
+  <%= upsertOneMutation %>: {
      extensions: { 
       model:  '<%= name %>',
       op: 'upsertOne',
@@ -71,7 +82,7 @@ export const <%= h.changeCase.camel(name) %>Mutations = {
       return ctx.prisma.<%= h.changeCase.camel(name) %>.upsert(args)
     },
   },
-  createMany<%= name %>: {
+  <%= createManyMutation %>: {
      extensions: { 
       model:  '<%= name %>',
       op: 'createMany',
@@ -86,7 +97,7 @@ export const <%= h.changeCase.camel(name) %>Mutations = {
       return ctx.prisma.<%= h.changeCase.camel(name) %>.createMany(args)
     },
   },
-  updateMany<%= name %>: {
+  <%= updateManyMutation %>: {
     extensions: { 
       model:  '<%= name %>',
       op: 'updateMany',
@@ -101,7 +112,7 @@ export const <%= h.changeCase.camel(name) %>Mutations = {
       return ctx.prisma.<%= h.changeCase.camel(name) %>.updateMany(args)
     },
   },
-  deleteMany<%= name %>: {
+  <%= deleteManyMutation %>: {
     extensions: { 
       model:  '<%= name %>',
       op: 'deleteMany',

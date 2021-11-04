@@ -2,6 +2,10 @@
 to: <%= options.dir %>/models/<%= name %>/subscriptions.ts
 ---
 
+<%_
+const subscriptionQuery = options.queryMap && options.queryMap.subscription ? options.queryMap.subscription(name) : h.changeCase.camel(name)
+-%>
+
 import { GraphQLNonNull, GraphQLObjectType } from 'graphql'
 import { <%= name %> } from './type'
 import { <%= name %>WhereInput, EnumPermissionTypeFilter } from '../inputs'
