@@ -28,6 +28,7 @@ module.exports = function (fastify, opts, done) {
       Body: data.file,
       ContentType: data.mimetype,
       ContentEncoding: data.encoding,
+      ACL: 'public-read',
     }
     let fileMeta
     if (Object.keys(data.fields).length > 4) {
