@@ -112,7 +112,11 @@ module.exports = function (fastify, opts, done) {
 async function getImageSize(req, reply) {
   const width = req.query?.w ? parseInt(req.query.w) : null
   const height = req.query?.h ? parseInt(req.query.h) : null
-  const fit = req.query?.fit || null
+  const fit =
+    req.query?.fit &&
+    ['cover', 'contain', 'fill', 'inside', 'outside'].includes(req.query?.fit)
+      ? req.query?.fit
+      : null
   let filePath = `thumbnails/${req.params['*']}`
   if (width || height) {
     const thumbName = (width ? `w-${width}` : '') + (height ? `h-${height}` : '') + (fit ? `-${fit}` : '')
