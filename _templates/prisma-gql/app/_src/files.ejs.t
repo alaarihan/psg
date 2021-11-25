@@ -75,7 +75,7 @@ module.exports = function (fastify, opts, done) {
       throw reply.code(404).type('text/plain').send('Not found!')
     const pathParsed = path.parse(req.params['*'])
     if (
-      req.query?.w &&
+      (req.query?.w || req.query?.h) &&
       [
         '.png',
         '.jpg',
@@ -110,10 +110,13 @@ module.exports = function (fastify, opts, done) {
 }
 
 async function getImageSize(req, reply) {
-  const width = req.query?.w
-  let filePath = 'thumbnails/'
-  if (width) {
-    filePath = `${filePath}${req.params['*']}/w-${width}`
+  const width = req.query?.w ? parseInt(req.query.w) : null
+  const height = req.query?.h ? parseInt(req.query.h) : null
+  const fit = req.query?.fit || null
+  let filePath = `thumbnails/${req.params['*']}`
+  if (width || height) {
+    const thumbName = (width ? `w-${width}` : '') + (height ? `h-${height}` : '') + (fit ? `-${fit}` : '')
+    filePath = `${filePath}/${thumbName}`
   }
   const object = await getObjectByKey(filePath).catch(async (err) => {
     if (err.name === 'NoSuchKey') {
@@ -127,7 +130,8 @@ async function getImageSize(req, reply) {
         return originalObject
       }
       let transform = sharp()
-      transform = transform.resize(parseInt(width))
+      const options = fit ? { fit } : undefined
+      transform = transform.resize(width, height, options)
       const originalImage = originalObject?.Body as Readable
       const target = {
         Bucket: process.env.S3_BUCKET_NAME,
