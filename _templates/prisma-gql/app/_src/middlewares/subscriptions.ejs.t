@@ -11,7 +11,10 @@ export const subscriptionsMiddleware = async (resolve, root, args, ctx, info) =>
       const result = await resolve(root, args, ctx, info)
       if (result && result.id) {
         const op = ext.op.slice(0, -3)
-        const eventName = `${info.returnType.ofType.name}_${op}d`
+        const returnType = info.returnType.ofType
+          ? info.returnType.ofType.name
+          : info.returnType.name
+        const eventName = `${returnType}_${op}d`
         ctx.pubsub.publish({
           topic: eventName.toUpperCase(),
           payload: { id: result.id, action: op.toUpperCase() },
