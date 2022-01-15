@@ -79,6 +79,11 @@ export const <%= name %> = new GraphQLObjectType({
       <%_ } -%>
       },
     <% }) %>
+    <%_ if(outputs.find((item) => item.name === `${name}CountOutputType`)){ -%>
+      _count: {
+        type: <%= name %>CountOutputType
+      }
+    <%_ } -%>
   }),
 })
 
