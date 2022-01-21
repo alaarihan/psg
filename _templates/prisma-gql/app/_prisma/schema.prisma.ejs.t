@@ -12,7 +12,6 @@ datasource db {
 }
 
 enum UserRole {
-  ROOT
   ADMIN
   USER
   BLOCKED
