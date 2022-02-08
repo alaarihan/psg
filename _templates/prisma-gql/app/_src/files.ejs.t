@@ -61,6 +61,7 @@ module.exports = function (fastify, opts, done) {
           bucket: process.env.S3_BUCKET_NAME,
           mimeType: data.mimetype,
           path: fileKey,
+          size: data.file?.bytesRead || null,
           meta: fileMeta,
         },
       })

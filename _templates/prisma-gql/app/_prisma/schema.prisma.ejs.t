@@ -79,6 +79,7 @@ model File {
   bucket    String
   mimeType  String
   path      String
+  size        Int?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   meta      Json?
