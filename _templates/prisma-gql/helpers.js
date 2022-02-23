@@ -24,13 +24,14 @@ module.exports = {
         newField = item.inputTypes[0]
       } else if (
         item.inputTypes.length > 1 &&
+        item.name !== 'data' &&
         (item.inputTypes[1].location === 'inputObjectTypes' ||
           item.inputTypes[1].isList)
       ) {
         newField = item.inputTypes[1]
       } else if (
         item.inputTypes.length > 1 &&
-        (item.inputTypes[1].type === 'Json')
+        item.inputTypes[1].type === 'Json'
       ) {
         newField = item.inputTypes[1]
       } else {

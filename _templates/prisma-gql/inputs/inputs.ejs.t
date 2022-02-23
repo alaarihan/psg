@@ -1,6 +1,7 @@
 ---
 to: <%= options.dir %>/models/inputs.ts
 force: true
+sh: "<%= !noPrettier ? `npm run prettier` : '' %>"
 ---
 
 import {
