@@ -11,10 +11,11 @@ unless_exists: true
   "private": true,
   "description": "<%= appDescription %>",
   "scripts": {
-    "start": "node -r dotenv/config dist/server",
-    "dev": "ts-node-dev -r dotenv/config --no-notify --respawn --transpile-only --exit-child src/server",
+    "start": "NODE_ENV=production node -r dotenv/config dist/server",
+    "dev": "nodemon --ext ts --exec \"npm -s run compile && NODE_ENV=development npm start\"",
     "clean": "rm -rf dist",
-    "build": "npm -s run clean && tsc",
+    "build": "npm -s run clean && npm -s run compile",
+    "compile": "swc src -d dist --config-file swcrc.json",
     "prisma:generate": "prisma generate",
     "prisma:studio": "prisma studio",
     "prisma:migrate": "prisma migrate dev",
@@ -41,11 +42,12 @@ unless_exists: true
     "sharp": "^0.29.2"
   },
   "devDependencies": {
+    "@swc/cli": "^0.1.55",
+    "@swc/core": "^1.2.144",
     "@types/node": "^16.7.2",
+    "nodemon": "^2.0.15",
     "prettier": "^2.3.2",
     "prisma": "^3.5.0",
-    "ts-node": "^10.2.1",
-    "ts-node-dev": "^1.1.8",
     "typescript": "^4.4.2"
   },
   "prettier": {
