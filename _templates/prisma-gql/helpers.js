@@ -6,7 +6,9 @@ const { dmmf } = require(PrismaClientPath)
 
 module.exports = {
   options,
-  inputs: dmmf.schema.inputObjectTypes.prisma,
+  inputs: dmmf.schema.inputObjectTypes.prisma.filter(
+    (item) => !item.name.includes('Unchecked'),
+  ),
   outputTypes: dmmf.schema.outputObjectTypes.prisma.filter(
     (item) => !['Query', 'Mutation'].includes(item.name),
   ),
@@ -25,6 +27,7 @@ module.exports = {
       } else if (
         item.inputTypes.length > 1 &&
         item.name !== 'data' &&
+        !item.inputTypes[1].type.includes('Unchecked') &&
         (item.inputTypes[1].location === 'inputObjectTypes' ||
           item.inputTypes[1].isList)
       ) {
