@@ -2,6 +2,7 @@
 to: <%= name %>/src/server.ts
 ---
 
+import { networkInterfaces } from 'os'
 import fastify from 'fastify'
 import mercurius from 'mercurius'
 import { applyMiddleware } from 'graphql-middleware'
@@ -19,14 +20,12 @@ const schemaWithMiddlewares = applyMiddleware(
 const app = fastify()
 
 async function start() {
-  app.register(require('fastify-cors'), {
+  app.register(require('@fastify/cors'), {
     origin: true,
     credentials: true,
   })
-  app.register(require('fastify-cookie'))
-  app.register(require('fastify-multipart'))
-  
-  app.register(require('./files'))
+  app.register(require('@fastify/cookie'))
+  app.register(require('@fastify/multipart'))
 
   app.register(mercurius, {
     schema: schemaWithMiddlewares,
@@ -43,11 +42,21 @@ async function start() {
 
   await app.ready()
 
+  const interfaces = networkInterfaces()
   app
-    .listen(process.env.PORT || 3000)
-    .then(() =>
-      console.log(`🚀 Server ready at ${process.env.API_URL}/graphiql`),
-    )
+    .listen({ port: parseInt(process.env.PORT) || 3000, host: '0.0.0.0' })
+    .then(() => {
+      console.log(`🚀 Server ready at:`)
+      for (const key in interfaces) {
+        if (Object.prototype.hasOwnProperty.call(interfaces, key)) {
+          console.log(
+            `http://${interfaces[key][0].address}:${
+              process.env.PORT || 3000
+            }/graphql`,
+          )
+        }
+      }
+    })
     .catch((err) => {
       console.log(err)
     })

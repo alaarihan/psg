@@ -1,6 +1,10 @@
-const { getGqlType, inputs, Enums, options } = require('../helpers')
+const { getHelpers } = require('../helpers')
+
+
 module.exports = {
-  params: ({ args }) => {
+  params: async ({ args }) => {
+    const helpers = await getHelpers()
+    const { getGqlType, inputs, Enums, options } = helpers
     if (args.noPrettier === undefined) {
       args.noPrettier = false
     }

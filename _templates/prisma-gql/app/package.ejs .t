@@ -24,31 +24,32 @@ unless_exists: true
     "prettier": "prettier --write src"
   },
   "dependencies": {
-   "@aws-sdk/client-s3": "^3.39.0",
+    "@aws-sdk/client-s3": "^3.39.0",
     "@aws-sdk/lib-storage": "^3.39.0",
-    "@paljs/plugins": "^4.0.8",
-    "@prisma/client": "^3.5.0",
+    "@fastify/cookie": "^7.0.0",
+    "@fastify/cors": "^8.0.0",
+    "@fastify/multipart": "^7.1.0",
+    "@paljs/plugins": "^4.0.18",
+    "@prisma/client": "^4.1.0",
     "change-case": "^4.1.2",
-    "dotenv": "^10.0.0",
-    "fastify": "^3.22.1",
-    "fastify-cookie": "^5.3.1",
-    "fastify-cors": "^6.0.2",
-    "fastify-multipart": "^5.1.0",
+    "dotenv": "^16.0.0",
+    "fastify": "^4.2.0",
     "graphql": "^15.7.2",
     "graphql-middleware": "^6.1.11",
     "graphql-scalars": "^1.13.1",
     "jsonwebtoken": "^8.5.1",
-    "mercurius": "^8.9.1",
-    "sharp": "^0.29.2"
+    "mercurius": "^10.1.0",
+    "sharp": "^0.30.7"
   },
   "devDependencies": {
-    "@swc/cli": "^0.1.55",
-    "@swc/core": "^1.2.144",
-    "@types/node": "^16.7.2",
+    "@prisma/internals": "^4.1.0",
+    "@swc/cli": "^0.1.57",
+    "@swc/core": "^1.2.218",
+    "@types/node": "^18.0.6",
     "nodemon": "^2.0.15",
-    "prettier": "^2.3.2",
-    "prisma": "^3.5.0",
-    "typescript": "^4.4.2"
+    "prettier": "^2.7.1",
+    "prisma": "^4.1.0",
+    "typescript": "^4.7.4"
   },
   "prettier": {
     "singleQuote": true,

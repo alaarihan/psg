@@ -1,18 +1,19 @@
 import { spawn } from 'child_process'
 
 const path = require('path')
-const PrismaClientPath = path.join(
+const PrismaInternalsPath = path.join(
   process.cwd(),
-  'node_modules/@prisma/client',
+  'node_modules/@prisma/internals',
 )
 
-let dmmf
-try {
-  dmmf = require(PrismaClientPath).dmmf
-} catch (e) {}
-const dataModels = dmmf?.datamodel?.models ? dmmf.datamodel.models : []
+const PrismaInternals = require(PrismaInternalsPath)
 
-export function generateModel(template, index) {
+export async function generateModel(template, index) {
+  const schema = await PrismaInternals.getSchema()
+  const dmmf = await PrismaInternals.getDMMF({
+    datamodel: schema,
+  })
+  const dataModels = dmmf?.datamodel?.models ? dmmf.datamodel.models : []
   const modelName = dataModels[index].name
   console.log(`\n## Start generating ${modelName} model. ##`)
   const gen = spawn(
