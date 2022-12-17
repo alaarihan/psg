@@ -6,7 +6,7 @@ PORT=3000
 JWT_SECRET=<%= appName %>Secret
 ROOT_SECRET=<%= appName %>RootSecret
 UNAUTHORIZED_ROLE=UNAUTHORIZED
-DATABASE_URL=postgres://username:password@host:5432/db_name?connection_limit=20
+DATABASE_URL=postgres://username:password@host:5432/db_name?connection_limit=1
 
 API_URL=http://localhost:3000
 

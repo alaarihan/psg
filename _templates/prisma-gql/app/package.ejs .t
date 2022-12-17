@@ -26,20 +26,21 @@ unless_exists: true
   "dependencies": {
     "@aws-sdk/client-s3": "^3.39.0",
     "@aws-sdk/lib-storage": "^3.39.0",
-    "@fastify/cookie": "^7.0.0",
+    "@fastify/cookie": "^8.3.0",
     "@fastify/cors": "^8.0.0",
     "@fastify/multipart": "^7.1.0",
-    "@paljs/plugins": "^4.0.18",
+    "@paljs/plugins": "^5.1.0",
     "@prisma/client": "^4.1.0",
     "change-case": "^4.1.2",
     "dotenv": "^16.0.0",
     "fastify": "^4.2.0",
-    "graphql": "^15.7.2",
+    "graphql": "^16.6.0",
     "graphql-middleware": "^6.1.11",
     "graphql-scalars": "^1.13.1",
     "jsonwebtoken": "^8.5.1",
-    "mercurius": "^10.1.0",
-    "sharp": "^0.30.7"
+    "mercurius": "^11.4.0",
+    "pluralize": "^8.0.0",
+    "sharp": "^0.31.2"
   },
   "devDependencies": {
     "@prisma/internals": "^4.1.0",
