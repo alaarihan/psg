@@ -1,6 +1,3 @@
-const path = require('path')
-const PrismaClientPath = path.join(process.cwd(), "node_modules/@prisma/client")
-
 const { getHelpers } = require('../helpers')
 module.exports = {
   params: async ({ args }) => {

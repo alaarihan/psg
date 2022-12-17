@@ -6,6 +6,7 @@ try {
   const generatorOptions = require(generatorOptionsFile)
   options = generatorOptions.options
 } catch (e) {
+  console.log(e)
 }
 if(!options.dir){
   options.dir = 'src'

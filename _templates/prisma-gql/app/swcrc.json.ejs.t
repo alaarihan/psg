@@ -1,3 +1,7 @@
+---
+to: <%= name %>/swcrc.json
+unless_exists: true
+---
 {
   "jsc": {
     "parser": {
