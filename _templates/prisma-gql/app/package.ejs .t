@@ -37,10 +37,10 @@ unless_exists: true
     "graphql": "^16.6.0",
     "graphql-middleware": "^6.1.11",
     "graphql-scalars": "^1.13.1",
-    "jsonwebtoken": "^8.5.1",
-    "mercurius": "^11.4.0",
+    "jsonwebtoken": "^9.0.0",
+    "mercurius": "^13.0.0",
     "pluralize": "^8.0.0",
-    "sharp": "^0.31.2"
+    "sharp": "^0.32.1"
   },
   "devDependencies": {
     "@prisma/internals": "^4.1.0",
@@ -50,7 +50,7 @@ unless_exists: true
     "nodemon": "^2.0.15",
     "prettier": "^2.7.1",
     "prisma": "^4.1.0",
-    "typescript": "^4.7.4"
+    "typescript": "^5.0.4"
   },
   "prettier": {
     "singleQuote": true,
